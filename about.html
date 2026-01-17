@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Ishan Pandhare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1 class="name">Ishan Pandhare</h1>
+        <p class="role">Electrical Engineering Student — Class of 2027</p>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="experience.html">Experience</a>
+        <a href="projects.html">Projects</a>
+        <a href="resume.html">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card about-card">
+      <h2>About</h2>
+      <div class="about-grid">
+        <div class="about-image">
+          <!-- Add your profile image to images/profile.jpg -->
+          <img src="images/profile.jpg" alt="Ishan Pandhare profile image">
+        </div>
+        <div>
+          <p>I am an electrical engineering student (Class of 2027) focused on embedded systems, power electronics, PCB design, and hardware-software integration. I enjoy designing practical hardware, prototyping systems, and documenting reproducible results.</p>
+          <p>Skills: Embedded C, Python, PCB layout, SPICE simulation, power converters, test automation, 3D modeling (Fusion 360).</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> Ishan Pandhare</div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

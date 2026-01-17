@@ -36,6 +36,16 @@ h2{margin-top:0}
 .socials{list-style:none;padding:0;margin:0}
 .socials li{margin:6px 0;color:var(--muted)}
 .site-footer{margin:28px 0;color:var(--muted);text-align:center}
+/* Hero and about layout */
+.hero{padding:36px 22px;text-align:left}
+.hero .lead{color:var(--muted);font-size:15px;margin-top:6px}
+.about-grid{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center}
+.about-image img{width:120px;height:120px;object-fit:cover;border-radius:12px;background:rgba(255,255,255,0.02)}
 @media(min-width:760px){
   .grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:720px){
+  .about-grid{grid-template-columns:1fr}
+  .nav a{margin-left:10px}
 }

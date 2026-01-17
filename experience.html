@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experience — Ishan Pandhare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1 class="name">Ishan Pandhare</h1>
+        <p class="role">Electrical Engineering Student — Class of 2027</p>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="experience.html">Experience</a>
+        <a href="projects.html">Projects</a>
+        <a href="resume.html">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Experience</h2>
+
+      <div class="item">
+        <h3>Boeing Algae to Biofuel Research Project</h3>
+        <p class="meta">California Polytechnic State University - San Luis Obispo — Aug 2025 — Present</p>
+        <p>Designed and prototyped a circuit board capable of lysing algae cells using 400 V to extract bio-compounds for fuel production. Implemented a parallel plate capacitor system to generate controlled electrical arcs for breaking algal cell walls. Developing a simplified chamber design to optimize separation and extraction for efficiency and scalability.</p>
+      </div>
+
+      <div class="item">
+        <h3>Rube Goldberg Machine Project</h3>
+        <p class="meta">Class Project — Nov 2024 — Jan 2025</p>
+        <p>Project manager for a multi-stage machine integrating parallel electronic subsystems: capacitive-touch piano, light detection, strobe lighting, and a metal detector. Designed and fabricated custom components with Fusion 360 and 3D printing. Led assembly and testing using DC power supplies, oscilloscopes, and multimeters to deliver a reliable prototype under tight deadlines.</p>
+      </div>
+
+      <div class="item">
+        <h3>Researcher — OWL Integrations</h3>
+        <p class="meta">California Polytechnic State University — May 2024 — Sep 2024</p>
+        <p>Developed a web interface for QUAD Pro, a Raspberry Pi-based emergency rural communication system using LoRa. Built a local Flask interface with Redis Streams to transfer CDP packets and enable messaging over radio in connectivity-limited environments. Collaborated across disciplines to refine embedded networking and wireless protocol integration.</p>
+      </div>
+
+      <div class="item">
+        <h3>Automated Faucet Attachment</h3>
+        <p class="meta">Class Project — Aug 2022 — Jun 2023</p>
+        <p>Designed an automated faucet actuator using a servo and a PCB-based timer with a seven-segment display. Implemented digital logic to trigger the actuator after a preset interval; debugged signal noise and mechanical alignment issues through iterative testing with oscilloscopes.</p>
+      </div>
+
+      <div class="item">
+        <h3>Intern — Comet</h3>
+        <p class="meta">Mar 2022 — Jun 2022</p>
+        <p>Led UI/UX development efforts and coordinated a small team to produce intuitive front-end interfaces. Facilitated cross-team meetings, prototyped designs, and helped deliver a functional application on schedule.</p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> Ishan Pandhare</div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
