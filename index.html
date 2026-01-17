@@ -45,12 +45,15 @@
   <main class="container">
     <section class="hero-grid">
       <div class="hero-left" data-reveal>
-        <h1 class="hero-title">Ishan Pandhare</h1>
-        <p class="hero-sub">Electrical Engineering student — Class of 2027. I design embedded systems, power electronics, and rapid hardware prototypes that bridge lab work to products.</p>
+        <h1 class="hero-title">Welcome! This is Ishan Pandhare's portfolio</h1>
+        <p class="hero-sub">I design embedded systems, power electronics, and rapid hardware prototypes. Explore my goals, accomplishments, and ongoing hurdles below.</p>
         <div class="hero-ctas">
           <a class="button" href="about.html">About</a>
           <a class="button ghost" href="projects.html">Projects</a>
           <a class="button" href="resume.html">Resume</a>
+        </div>
+        <div style="margin-top:18px">
+          <a href="#home-sections" class="down-arrow" aria-label="Scroll down to more">▾</a>
         </div>
       </div>
 
@@ -58,15 +61,35 @@
         <div class="blob"></div>
       </div>
     </section>
+
+    <section id="home-sections" class="card" style="margin-top:28px;" data-reveal>
+      <div class="grid">
+        <article class="card" data-reveal>
+          <h3>Goals for the future</h3>
+          <p>Focus on scalable power electronics designs, production-level PCB workflows, and embedded systems that enable robust field deployments.</p>
+        </article>
+
+        <article class="card" data-reveal>
+          <h3>Greatest accomplishments</h3>
+          <p>Developed the QUAD Pro communication prototype, contributed to aerospace-related biofuel research, and led multi-disciplinary prototype builds.</p>
+        </article>
+
+        <article class="card" data-reveal>
+          <h3>Hurdles to accomplish</h3>
+          <p>Scaling prototypes to production, improving power-efficiency under constraints, and building resilient communication stacks for low-connectivity environments.</p>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">Ishan Pandhare</div>
+    <div class="container">© Ishan Pandhare</div>
   </footer>
 
   <script>
   (function(){
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // safe: year element may not exist on this page; guard
+    const yearEl = document.getElementById('year'); if (yearEl) yearEl.textContent = new Date().getFullYear();
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
     document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
@@ -96,6 +119,16 @@
     placeIndicator(activeLink);
     window.addEventListener('resize', ()=> placeIndicator(document.querySelector('.nav a.active') || document.querySelector('.nav a')));
     navLinks.forEach(a=> a.addEventListener('click', ()=> placeIndicator(a)));
+
+    // Down-arrow smooth scroll handler
+    const down = document.querySelector('.down-arrow');
+    if(down){
+      down.addEventListener('click', function(e){
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    }
   })();
   </script>
 </body>

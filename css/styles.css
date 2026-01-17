@@ -124,5 +124,14 @@ h2{font-size:22px}
 /* Accessibility: focus state for nav */
 .nav a:focus{outline:3px solid rgba(107,140,255,0.14);outline-offset:4px}
 
+/* Down-arrow CTA */
+.down-arrow{display:inline-block;width:44px;height:44px;border-radius:999px;background:rgba(17,75,138,0.08);color:var(--accent-start);font-size:22px;line-height:44px;text-align:center;text-decoration:none;transition:transform .18s ease,background .18s ease,box-shadow .18s ease}
+.down-arrow:hover{transform:translateY(-4px);background:rgba(17,75,138,0.12);box-shadow:0 12px 30px rgba(17,75,138,0.06)}
+.down-arrow:active{transform:translateY(1px) scale(.995)}
+
+/* Home sections grid */
+#home-sections .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+#home-sections .card{padding:20px;border-radius:12px}
+
 /* subtle press animation for buttons and nav */
 .button:active{transform:translateY(1px) scale(0.995)}
