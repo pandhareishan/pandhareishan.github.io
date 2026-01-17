@@ -9,7 +9,7 @@
   --accent-warm-end: #ffd9a8;
   --glass: rgba(15,23,36,0.02);
   --maxw:1100px;
-  --shadow: 0 12px 40px rgba(16,24,40,0.06);
+  --shadow: 0 18px 60px rgba(16,24,40,0.06);
 }
 *{box-sizing:border-box}
 html,body{height:100%;}
@@ -24,21 +24,22 @@ body{
 }
 h2{margin-top:0}
 .container{max-width:var(--maxw);margin:28px auto;padding:0 20px}
-.site-header{border-bottom:1px solid rgba(15,23,36,0.06);backdrop-filter:blur(6px);background:transparent}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.site-header{position:sticky;top:0;z-index:40;background:transparent;backdrop-filter:blur(6px);border-bottom:1px solid rgba(15,23,36,0.04)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
 .brand{display:flex;gap:14px;align-items:center}
-.avatar svg{width:56px;height:56px;border-radius:10px}
-.name{margin:0;font-size:18px;font-weight:700}
+.avatar svg{width:48px;height:48px;border-radius:10px}
+.name{margin:0;font-size:17px;font-weight:700}
 .role{margin:0;color:var(--muted);font-size:13px}
-.nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:14px;transition:color .18s ease}
-.nav a:hover{color:var(--text)}
+.nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:14px;transition:all .16s ease;padding:8px 10px;border-radius:8px}
+.nav a:hover{color:var(--text);background:rgba(15,23,36,0.03)}
 .card{background:var(--surface);padding:22px;border-radius:14px;margin-top:20px;border:1px solid rgba(16,24,40,0.04);box-shadow:var(--shadow);transition:transform .14s ease,box-shadow .14s ease}
 .item{margin-bottom:12px}
 .meta{color:var(--muted);font-size:13px;margin:6px 0}
 .grid{display:grid;grid-template-columns:1fr;gap:14px}
-.project{padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6));border:1px solid rgba(16,24,40,0.04)}
+.project{padding:18px;border-radius:14px;background:#fff;border:1px solid rgba(16,24,40,0.04)}
 .small{color:var(--muted);font-size:13px}
 .button{display:inline-block;padding:12px 18px;background:linear-gradient(90deg,#ff4f9a,#ff8cc2);color:#061028;border-radius:14px;text-decoration:none;font-weight:700;box-shadow:0 14px 36px rgba(255,79,154,0.12);transition:transform .12s ease,box-shadow .12s ease}
+.button.ghost{background:transparent;color:var(--accent-start);box-shadow:none;border:1px solid rgba(15,23,36,0.06)}
 .button:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(255,79,154,0.16)}
 .socials{list-style:none;padding:0;margin:0}
 .socials li{margin:6px 0;color:var(--muted)}
