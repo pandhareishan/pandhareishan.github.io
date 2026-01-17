@@ -38,13 +38,13 @@ h2{margin-top:0}
 .grid{display:grid;grid-template-columns:1fr;gap:14px}
 .project{padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6));border:1px solid rgba(16,24,40,0.04)}
 .small{color:var(--muted);font-size:13px}
-.button{display:inline-block;padding:10px 14px;background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#06203a;border-radius:10px;text-decoration:none;font-weight:600;box-shadow:0 8px 24px rgba(124,156,255,0.12);transition:transform .12s ease,box-shadow .12s ease}
-.button:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(124,156,255,0.12)}
+.button{display:inline-block;padding:12px 18px;background:linear-gradient(90deg,#ff4f9a,#ff8cc2);color:#061028;border-radius:14px;text-decoration:none;font-weight:700;box-shadow:0 14px 36px rgba(255,79,154,0.12);transition:transform .12s ease,box-shadow .12s ease}
+.button:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(255,79,154,0.16)}
 .socials{list-style:none;padding:0;margin:0}
 .socials li{margin:6px 0;color:var(--muted)}
 .site-footer{margin:36px 0;color:var(--muted);text-align:center}
 /* Hero and about layout */
-.hero{padding:64px 28px 48px;text-align:left;border-radius:16px;background:linear-gradient(180deg, rgba(123,139,255,0.06), rgba(255,238,240,0.02));box-shadow:0 24px 60px rgba(16,24,40,0.06);margin-top:12px}
+.hero{padding:64px 28px 48px;text-align:left;border-radius:16px;background:linear-gradient(180deg, rgba(255,95,155,0.16), rgba(255,159,220,0.06));box-shadow:0 24px 60px rgba(16,24,40,0.06);margin-top:12px}
 .hero .lead{color:var(--muted);font-size:16px;margin-top:12px;max-width:64ch}
 .hero h2{font-size:36px;line-height:1.05;margin:0 0 8px}
 .about-grid{display:grid;grid-template-columns:140px 1fr;gap:22px;align-items:center}
