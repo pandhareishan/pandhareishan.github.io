@@ -60,7 +60,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">© <span id="year"></span> Ishan Pandhare — Built with a modern, minimal style.</div>
+    <div class="container">Ishan Pandhare</div>
   </footer>
 
   <script>
@@ -70,7 +70,13 @@
     const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
     document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
     const path = location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav a').forEach(a=>{const h=a.getAttribute('href'); if(h===path || (path==='index.html' && h==='index.html')) a.classList.add('active');});
+    document.querySelectorAll('.nav a').forEach(a=>{const h=a.getAttribute('href'); if(h===path || (path==='index.html' && h==='index.html')) a.classList.add('active');
+      // add click/press animation handlers
+      a.addEventListener('mousedown', ()=> a.classList.add('pressed'));
+      ['mouseup','mouseleave','blur'].forEach(ev=> a.addEventListener(ev, ()=> a.classList.remove('pressed')));
+      a.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') a.classList.add('pressed'); });
+      a.addEventListener('keyup', ()=> a.classList.remove('pressed'));
+    });
   })();
   </script>
 </body>
