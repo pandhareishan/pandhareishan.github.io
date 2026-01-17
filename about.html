@@ -27,10 +27,10 @@
   <main class="container">
     <section class="card about-card">
       <div class="about-grid">
-        <div class="about-image">
+        <div class="about-image" data-reveal>
           <img src="images/profile.jpg" alt="Ishan Pandhare profile image">
         </div>
-        <div>
+        <div data-reveal>
           <h2>About</h2>
           <p>I am an electrical engineering student (Class of 2027) focused on embedded systems, power electronics, PCB design, and hardware-software integration. I enjoy designing practical hardware, prototyping systems, and documenting reproducible results.</p>
           <p>Skills: Embedded C, Python, PCB layout, SPICE simulation, power converters, test automation, 3D modeling (Fusion 360).</p>
@@ -50,6 +50,15 @@
     <div class="container">© <span id="year"></span> Ishan Pandhare</div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+  (function(){
+    document.getElementById('year').textContent = new Date().getFullYear();
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
+    document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
+    const path = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav a').forEach(a=>{const h=a.getAttribute('href'); if(h===path || (path==='index.html' && h==='index.html')) a.classList.add('active');});
+  })();
+  </script>
 </body>
 </html>

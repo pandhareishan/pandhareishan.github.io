@@ -5,6 +5,9 @@
   --text: #0f1724;
   --accent-start: #6b8cff;
   --accent-end: #9fd2ff;
+  --accent: linear-gradient(90deg,var(--accent-start),var(--accent-end));
+  --accent-2-start: #ffd6e0;
+  --accent-2-end: #ffd9a8;
   --accent-warm-start: #ffd6e0;
   --accent-warm-end: #ffd9a8;
   --glass: rgba(15,23,36,0.02);
@@ -32,6 +35,7 @@ h2{margin-top:0}
 .role{margin:0;color:var(--muted);font-size:13px}
 .nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:14px;transition:all .16s ease;padding:8px 10px;border-radius:8px}
 .nav a:hover{color:var(--text);background:rgba(15,23,36,0.03)}
+.nav a.active{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#041428}
 .card{background:var(--surface);padding:22px;border-radius:14px;margin-top:20px;border:1px solid rgba(16,24,40,0.04);box-shadow:var(--shadow);transition:transform .14s ease,box-shadow .14s ease}
 .item{margin-bottom:12px}
 .meta{color:var(--muted);font-size:13px;margin:6px 0}
@@ -45,9 +49,11 @@ h2{margin-top:0}
 .socials li{margin:6px 0;color:var(--muted)}
 .site-footer{margin:36px 0;color:var(--muted);text-align:center}
 /* Hero and about layout */
-.hero{padding:64px 28px 48px;text-align:left;border-radius:16px;background:linear-gradient(180deg, rgba(255,95,155,0.16), rgba(255,159,220,0.06));box-shadow:0 24px 60px rgba(16,24,40,0.06);margin-top:12px}
+.hero{padding:64px 28px 48px;text-align:left;border-radius:16px;background:linear-gradient(180deg, rgba(255,95,155,0.12), rgba(255,159,220,0.04));box-shadow:0 24px 60px rgba(16,24,40,0.06);margin-top:12px}
 .hero .lead{color:var(--muted);font-size:16px;margin-top:12px;max-width:64ch}
 .hero h2{font-size:36px;line-height:1.05;margin:0 0 8px}
+.hero-right{display:flex;align-items:center;justify-content:center}
+.blob{width:320px;height:260px;border-radius:40px;background:linear-gradient(90deg,var(--accent-start),var(--accent-end));filter:blur(36px);opacity:0.95;animation:float 6s ease-in-out infinite}
 .about-grid{display:grid;grid-template-columns:140px 1fr;gap:22px;align-items:center}
 .about-image img{width:140px;height:140px;object-fit:cover;border-radius:18px;background:linear-gradient(180deg, rgba(124,156,255,0.06), rgba(255,214,224,0.04));box-shadow:0 12px 30px rgba(16,24,40,0.06);border:6px solid rgba(255,255,255,0.6)}
 @media(min-width:760px){
@@ -75,6 +81,21 @@ p{color:rgba(15,23,36,0.8);margin:10px 0}
 @keyframes fadeInUp{
   from{opacity:0;transform:translateY(8px)}
   to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes float{
+  0%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-10px) rotate(2deg)}
+  100%{transform:translateY(0) rotate(-2deg)}
+}
+
+/* Reveal utility */
+[data-reveal]{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+[data-reveal].in-view{opacity:1;transform:none}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .blob, [data-reveal]{animation:none!important;transition:none!important}
 }
 
 /* Small hover lift for project cards */

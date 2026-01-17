@@ -25,7 +25,7 @@
   </header>
 
   <main class="container">
-    <section class="card">
+    <section class="card" data-reveal>
       <h2>Resume</h2>
       <p>Download PDF: <a class="button" href="Ishan Pandhare Resume.pdf" download>Download Resume (PDF)</a></p>
       <p>If you prefer an embedded view, open the PDF in a new tab:</p>
@@ -37,6 +37,15 @@
     <div class="container">© <span id="year"></span> Ishan Pandhare</div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+  (function(){
+    document.getElementById('year').textContent = new Date().getFullYear();
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
+    document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
+    const path = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav a').forEach(a=>{const h=a.getAttribute('href'); if(h===path || (path==='index.html' && h==='index.html')) a.classList.add('active');});
+  })();
+  </script>
 </body>
 </html>

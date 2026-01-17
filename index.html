@@ -43,7 +43,7 @@
 
   <main class="container">
     <section class="hero-grid">
-      <div class="hero-left">
+      <div class="hero-left" data-reveal>
         <h1 class="hero-title">Ishan Pandhare</h1>
         <p class="hero-sub">Electrical Engineering student — Class of 2027. I design embedded systems, power electronics, and rapid hardware prototypes that bridge lab work to products.</p>
         <div class="hero-ctas">
@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <div class="hero-right" aria-hidden="true">
+      <div class="hero-right" aria-hidden="true" data-reveal>
         <div class="blob"></div>
       </div>
     </section>
@@ -64,7 +64,14 @@
   </footer>
 
   <script>
+  (function(){
     document.getElementById('year').textContent = new Date().getFullYear();
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
+    document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
+    const path = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav a').forEach(a=>{const h=a.getAttribute('href'); if(h===path || (path==='index.html' && h==='index.html')) a.classList.add('active');});
+  })();
   </script>
 </body>
 </html>

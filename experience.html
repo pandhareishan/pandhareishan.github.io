@@ -29,7 +29,7 @@
       <h2>Experience</h2>
 
 
-      <div class="item">
+      <div class="item" data-reveal>
         <h3>Researcher — OWL Integrations</h3>
         <p class="meta">California Polytechnic State University — May 2024 — Sep 2024</p>
         <p>Developed a web interface for QUAD Pro, a Raspberry Pi-based emergency rural communication system using LoRa. Built a local Flask interface with Redis Streams to transfer CDP packets and enable messaging over radio in connectivity-limited environments. Collaborated across disciplines to refine embedded networking and wireless protocol integration.</p>
@@ -37,7 +37,7 @@
 
       <!-- Project items moved to Projects page -->
 
-      <div class="item">
+      <div class="item" data-reveal>
         <h3>Intern — Comet</h3>
         <p class="meta">Mar 2022 — Jun 2022</p>
         <p>Led UI/UX development efforts and coordinated a small team to produce intuitive front-end interfaces. Facilitated cross-team meetings, prototyped designs, and helped deliver a functional application on schedule.</p>
@@ -50,6 +50,15 @@
     <div class="container">© <span id="year"></span> Ishan Pandhare</div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+  (function(){
+    document.getElementById('year').textContent = new Date().getFullYear();
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
+    document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
+    const path = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav a').forEach(a=>{const h=a.getAttribute('href'); if(h===path || (path==='index.html' && h==='index.html')) a.classList.add('active');});
+  })();
+  </script>
 </body>
 </html>

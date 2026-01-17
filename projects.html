@@ -28,38 +28,38 @@
     <section class="card">
       <h2>Projects</h2>
       <div class="grid">
-        <article class="project">
+        <article class="project" data-reveal>
           <h4>Low-noise Power Supply</h4>
           <p>Custom SMPS design with low-ripple linear post-regulation for sensitive analog front-ends.</p>
           <p class="small"><a href="#">Repository / Details</a></p>
         </article>
-        <article class="project">
+        <article class="project" data-reveal>
           <h4>Sensor Fusion Board</h4>
           <p>IMU + MCU board with optimized layout for vibration immunity and robust I2C bus handling.</p>
           <p class="small"><a href="#">Repository / Details</a></p>
         </article>
-        <article class="project">
+        <article class="project" data-reveal>
           <h4>Boeing Algae to Biofuel Research</h4>
           <div class="proj-badge">Research</div>
           <p>Designed and prototyped a circuit board capable of lysing algae cells using 400 V to extract bio-compounds for fuel production. Implemented parallel plate capacitor arcs and developed chamber concepts for scalable extraction.</p>
           <p class="small"><a href="#">Repository / Details</a></p>
         </article>
 
-        <article class="project">
+        <article class="project" data-reveal>
           <h4>Rube Goldberg Machine</h4>
           <div class="proj-badge">Team Project</div>
           <p>Project-managed a multi-stage Rube Goldberg integrating multiple electronic subsystems (capacitive-touch piano, light detection, strobe lighting, metal detector). Led fabrication using Fusion 360 and testing with scopes and multimeters.</p>
           <p class="small"><a href="#">Repository / Details</a></p>
         </article>
 
-        <article class="project">
+        <article class="project" data-reveal>
           <h4>Automated Faucet Attachment</h4>
           <div class="proj-badge">Class Project</div>
           <p>Designed a servo-actuated faucet attachment and a PCB timer with seven-segment display. Implemented digital logic for actuation and refined mechanical tolerances through testing.</p>
           <p class="small"><a href="#">Repository / Details</a></p>
         </article>
 
-        <article class="project">
+        <article class="project" data-reveal>
           <h4>QUAD Pro — Rural Communication</h4>
           <div class="proj-badge">Research</div>
           <p>Raspberry Pi + LoRa system for emergency messaging and CDP packet transfer. Web interface and messaging via Flask + Redis Streams.</p>
@@ -73,6 +73,15 @@
     <div class="container">© <span id="year"></span> Ishan Pandhare</div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+  (function(){
+    document.getElementById('year').textContent = new Date().getFullYear();
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
+    document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
+    const path = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav a').forEach(a=>{const h=a.getAttribute('href'); if(h===path || (path==='index.html' && h==='index.html')) a.classList.add('active');});
+  })();
+  </script>
 </body>
 </html>
