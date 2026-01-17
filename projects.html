@@ -20,6 +20,7 @@
         <a href="experience.html">Experience</a>
         <a href="projects.html">Projects</a>
         <a href="resume.html">Resume</a>
+        <span class="nav-indicator" aria-hidden="true"></span>
       </nav>
     </div>
   </header>
@@ -80,12 +81,30 @@
     const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
     document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
     const path = location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav a').forEach(a=>{const h=a.getAttribute('href'); if(h===path || (path==='index.html' && h==='index.html')) a.classList.add('active');
+    const navLinks = Array.from(document.querySelectorAll('.nav a'));
+    navLinks.forEach(a=>{
+      const h=a.getAttribute('href'); if(h===path || (path==='index.html' && h==='index.html')) a.classList.add('active');
       a.addEventListener('mousedown', ()=> a.classList.add('pressed'));
       ['mouseup','mouseleave','blur'].forEach(ev=> a.addEventListener(ev, ()=> a.classList.remove('pressed')));
       a.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') a.classList.add('pressed'); });
       a.addEventListener('keyup', ()=> a.classList.remove('pressed'));
     });
+
+    const nav = document.querySelector('.nav');
+    const indicator = nav && nav.querySelector('.nav-indicator');
+    function placeIndicator(target){
+      if(!indicator || !target) return;
+      const r = target.getBoundingClientRect();
+      const nr = nav.getBoundingClientRect();
+      const left = r.left - nr.left + nav.scrollLeft;
+      indicator.style.width = r.width + 'px';
+      indicator.style.transform = `translateX(${left}px)`;
+      indicator.style.opacity = '1';
+    }
+    const activeLink = navLinks.find(a=>a.classList.contains('active')) || navLinks[0];
+    placeIndicator(activeLink);
+    window.addEventListener('resize', ()=> placeIndicator(document.querySelector('.nav a.active') || document.querySelector('.nav a')));
+    navLinks.forEach(a=> a.addEventListener('click', ()=> placeIndicator(a)));
   })();
   </script>
 </body>
