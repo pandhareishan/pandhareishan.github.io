@@ -29,7 +29,7 @@
     <section class="card">
       <h2>Projects</h2>
       <div class="grid">
-        <article class="project" data-reveal>
+        <article class="project" data-reveal data-slug="low-noise-power-supply">
           <div class="proj-media">
             <div class="proj-thumb thumb--blue" aria-hidden="true"></div>
             <div class="proj-overlay">View</div>
@@ -39,7 +39,7 @@
           <p class="small"><a href="#">Repository / Details</a></p>
         </article>
 
-        <article class="project" data-reveal>
+        <article class="project" data-reveal data-slug="sensor-fusion-board">
           <div class="proj-media">
             <div class="proj-thumb thumb--green" aria-hidden="true"></div>
             <div class="proj-overlay">View</div>
@@ -49,7 +49,7 @@
           <p class="small"><a href="#">Repository / Details</a></p>
         </article>
 
-        <article class="project" data-reveal>
+        <article class="project" data-reveal data-slug="boeing-algae-biofuel">
           <div class="proj-media">
             <div class="proj-thumb thumb--teal" aria-hidden="true"></div>
             <div class="proj-overlay">View</div>
@@ -60,7 +60,7 @@
           <p class="small"><a href="#">Repository / Details</a></p>
         </article>
 
-        <article class="project" data-reveal>
+        <article class="project" data-reveal data-slug="rube-goldberg-machine">
           <div class="proj-media">
             <div class="proj-thumb thumb--purple" aria-hidden="true"></div>
             <div class="proj-overlay">View</div>
@@ -71,7 +71,7 @@
           <p class="small"><a href="#">Repository / Details</a></p>
         </article>
 
-        <article class="project" data-reveal>
+        <article class="project" data-reveal data-slug="automated-faucet-attachment">
           <div class="proj-media">
             <div class="proj-thumb thumb--warm" aria-hidden="true"></div>
             <div class="proj-overlay">View</div>
@@ -82,7 +82,7 @@
           <p class="small"><a href="#">Repository / Details</a></p>
         </article>
 
-        <article class="project" data-reveal>
+        <article class="project" data-reveal data-slug="quad-pro">
           <div class="proj-media">
             <div class="proj-thumb thumb--blue" aria-hidden="true" style="background-image:url('images/hero-board.jpg')"></div>
             <div class="proj-overlay">View</div>
@@ -100,12 +100,35 @@
     <div class="container">© <span id="year"></span> Ishan Pandhare</div>
   </footer>
 
+  <!-- project details modal -->
+  <div class="project-modal" id="project-modal" aria-hidden="true">
+    <div class="modal-inner">
+      <button class="close-btn" id="project-modal-close">✕</button>
+      <div class="pm-media" id="pm-media" aria-hidden="true"></div>
+      <div class="pm-content">
+        <h3 class="pm-title" id="pm-title"></h3>
+        <div class="pm-desc" id="pm-desc"></div>
+        <p class="pm-links" id="pm-links"></p>
+      </div>
+    </div>
+  </div>
+
   <script>
   (function(){
     document.getElementById('year').textContent = new Date().getFullYear();
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
-    document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // stagger project reveal delays
+    document.querySelectorAll('.project').forEach((el,i)=> el.style.setProperty('--delay', `${i*80}ms`));
+
+    if (!prefersReduced) {
+      const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
+      document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
+    } else {
+      // if reduced motion, just mark visible
+      document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('in-view'));
+    }
+
     const path = location.pathname.split('/').pop() || 'index.html';
     const pageName = (path === 'index.html' || path === '') ? 'home' : path.replace('.html','');
     document.body.classList.add('page-' + pageName);
@@ -133,6 +156,80 @@
     placeIndicator(activeLink);
     window.addEventListener('resize', ()=> placeIndicator(document.querySelector('.nav a.active') || document.querySelector('.nav a')));
     navLinks.forEach(a=> a.addEventListener('click', ()=> placeIndicator(a)));
+
+    // Try to load project thumbnails from images/projects/{slug}.gif|jpg|png
+    function tryLoadThumbs(){
+      document.querySelectorAll('.project').forEach(article=>{
+        const thumb = article.querySelector('.proj-thumb');
+        if(!thumb) return;
+        // if already has background-image, skip
+        if(thumb.style.backgroundImage && thumb.style.backgroundImage !== 'none') return;
+        const slug = article.dataset.slug;
+        if(!slug) return;
+        const candidates = [`images/projects/${slug}.gif`,`images/projects/${slug}.mp4`,`images/projects/${slug}.jpg`,`images/projects/${slug}.png`];
+        (function tryNext(list){
+          if(!list.length) return;
+          const src = list.shift();
+          if(src.endsWith('.mp4')){
+            // for videos, just set a poster if exists
+            const xhr = new XMLHttpRequest();
+            xhr.open('HEAD', src);
+            xhr.onload = function(){ if(xhr.status===200) { thumb.style.backgroundImage = `url('${src}')`; }};
+            xhr.onerror = ()=> tryNext(list);
+            xhr.send();
+            return;
+          }
+          const img = new Image();
+          img.onload = ()=> { thumb.style.backgroundImage = `url('${src}')`; thumb.classList.remove('thumb--blue','thumb--green','thumb--teal','thumb--purple','thumb--warm'); };
+          img.onerror = ()=> tryNext(list);
+          img.src = src;
+        })(candidates.slice());
+      });
+    }
+
+    tryLoadThumbs();
+
+    // Project modal handling
+    const projectModal = document.getElementById('project-modal');
+    const pmClose = document.getElementById('project-modal-close');
+    const pmMedia = document.getElementById('pm-media');
+    const pmTitle = document.getElementById('pm-title');
+    const pmDesc = document.getElementById('pm-desc');
+    const pmLinks = document.getElementById('pm-links');
+
+    function openProject(article){
+      const slug = article.dataset.slug;
+      const title = article.querySelector('h4') && article.querySelector('h4').textContent || '';
+      const desc = article.querySelector('p') && article.querySelector('p').textContent || '';
+      pmTitle.textContent = title;
+      pmDesc.textContent = desc;
+      pmLinks.innerHTML = article.querySelector('.small') ? article.querySelector('.small').innerHTML : '';
+      pmMedia.innerHTML = '';
+      const candidates = slug ? [`images/projects/${slug}.gif`,`images/projects/${slug}.jpg`,`images/projects/${slug}.png`,`images/hero-board.jpg`] : ['images/hero-board.jpg'];
+      (function tryNext(list){
+        if(!list.length){ pmMedia.innerHTML = '<div style="padding:40px;color:var(--text-muted)">No preview available.</div>'; return; }
+        const src = list.shift();
+        const img = new Image();
+        img.onload = ()=> { pmMedia.innerHTML = ''; img.alt = title; pmMedia.appendChild(img); };
+        img.onerror = ()=> tryNext(list);
+        img.src = src;
+      })(candidates.slice());
+
+      projectModal.classList.add('open'); projectModal.setAttribute('aria-hidden','false');
+    }
+
+    document.querySelectorAll('.proj-media').forEach(pm=>{
+      pm.addEventListener('click', (e)=>{
+        const article = pm.closest('.project');
+        if(article) openProject(article);
+      });
+    });
+
+    function closeProject(){ projectModal.classList.remove('open'); projectModal.setAttribute('aria-hidden','true'); pmMedia.innerHTML=''; }
+    pmClose && pmClose.addEventListener('click', closeProject);
+    projectModal && projectModal.addEventListener('click', (e)=>{ if(e.target===projectModal) closeProject(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeProject(); });
+
   })();
   </script>
 </body>

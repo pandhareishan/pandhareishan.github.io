@@ -56,9 +56,15 @@
   <script>
   (function(){
     document.getElementById('year').textContent = new Date().getFullYear();
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
-    document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // stagger timeline items
+    document.querySelectorAll('.timeline .item').forEach((el,i)=> el.style.setProperty('--delay', `${i * 120}ms`));
+    if (!prefersReduced) {
+      const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
+      document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
+    } else {
+      document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('in-view'));
+    }
     const path = location.pathname.split('/').pop() || 'index.html';
     const pageName = (path === 'index.html' || path === '') ? 'home' : path.replace('.html','');
     document.body.classList.add('page-' + pageName);
