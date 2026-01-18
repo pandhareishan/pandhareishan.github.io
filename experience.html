@@ -58,6 +58,8 @@
     const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
     document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
     const path = location.pathname.split('/').pop() || 'index.html';
+    const pageName = (path === 'index.html' || path === '') ? 'home' : path.replace('.html','');
+    document.body.classList.add('page-' + pageName);
     const navLinks = Array.from(document.querySelectorAll('.nav a'));
     navLinks.forEach(a=>{
       const h=a.getAttribute('href'); if(h===path || (path==='index.html' && h==='index.html')) a.classList.add('active');
