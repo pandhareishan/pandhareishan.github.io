@@ -3,39 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ishan Pandhare — Electrical Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1.3">
+  <title>Ishan Pandhare — Electrical Engineering Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <div class="avatar" aria-hidden="true">
-          <!-- stylized SVG avatar -->
-          <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="av-grad" x1="0" x2="1">
-                <stop offset="0" stop-color="#2d9cdb" />
-                <stop offset="1" stop-color="#1e5fa8" />
-              </linearGradient>
-            </defs>
-            <rect width="48" height="48" rx="10" fill="#071428" />
-            <circle cx="24" cy="18" r="9" fill="url(#av-grad)" />
-            <rect x="12" y="30" width="24" height="6" rx="3" fill="#123147" />
-          </svg>
-        </div>
-        <div>
-          <h1 class="name">Ishan Pandhare</h1>
-          <p class="role">Electrical Engineer — Embedded Systems & Power Design</p>
-        </div>
+        <h1 class="name">Ishan Pandhare</h1>
+        <p class="role">Electrical Engineering Student</p>
       </div>
 
       <nav class="nav">
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="experience.html">Experience</a>
         <a href="projects.html">Projects</a>
+        <a href="experience.html">Experience</a>
         <a href="resume.html">Resume</a>
         <span class="nav-indicator" aria-hidden="true"></span>
       </nav>
@@ -43,120 +28,98 @@
   </header>
 
   <main class="container">
-    <section class="hero-grid">
-      <div class="hero-left" data-reveal>
-        <h1 class="hero-title">Welcome to my portfolio.</h1>
-        <p class="hero-sub">I design embedded systems, power electronics, and rapid hardware prototypes. Explore my goals, accomplishments, and ongoing hurdles below.</p>
-        <div class="hero-ctas">
-          <a class="button" href="about.html">About</a>
-          <a class="button ghost" href="projects.html">Projects</a>
-          <a class="button" href="resume.html">Resume</a>
-        </div>
-        <div style="margin-top:18px">
-          <a href="#home-sections" class="down-arrow" aria-label="Scroll down to more">▾</a>
-        </div>
-      </div>
 
-      <div class="hero-right" aria-hidden="true" data-reveal>
-        <div class="hero-svg" aria-hidden="true">
-          <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-            <defs>
-              <linearGradient id="g1" x1="0" x2="1">
-                <stop offset="0" stop-color="#235fa8" />
-                <stop offset="1" stop-color="#5fb3ff" />
-              </linearGradient>
-              <filter id="f1" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="12" result="b" />
-                <feComposite in="SourceGraphic" in2="b" operator="over" />
-              </filter>
-              <clipPath id="rect-clip"><rect x="20" y="20" rx="28" ry="28" width="260" height="180" /></clipPath>
-            </defs>
+    <!-- HERO -->
+    <section class="hero" data-reveal>
+      <h1 class="hero-title">
+        Exploring electrical engineering,<br>
+        advancing one system at a time.
+      </h1>
 
-            <!-- image: placed under the small white UI elements; if images/hero-board.jpg is missing, gradient shows -->
-            <g clip-path="url(#rect-clip)">
-              <image href="images/hero-board.jpg" x="20" y="20" width="260" height="180" preserveAspectRatio="xMidYMid slice" opacity="0.95" />
-              <rect x="20" y="20" rx="28" ry="28" width="260" height="180" fill="url(#g1)" opacity="0.18" />
-            </g>
+      <p class="hero-sub">
+        I’m a student engineer driven by curiosity, hands-on experimentation,
+        and steady growth across power systems, embedded hardware, and real-world design.
+      </p>
 
-            <g fill="#fff" opacity="0.95">
-              <rect x="48" y="58" width="56" height="8" rx="4" />
-              <rect x="48" y="76" width="140" height="8" rx="4" />
-              <circle cx="220" cy="70" r="6" />
-              <circle cx="220" cy="92" r="6" />
-            </g>
-          </svg>
-        </div>
+      <div class="hero-ctas">
+        <a class="button" href="projects.html">View Projects</a>
+        <a class="button ghost" href="resume.html">Resume</a>
       </div>
     </section>
 
-    <section id="home-sections" class="card" style="margin-top:28px;" data-reveal>
-      <div class="grid">
-        <article class="card" data-reveal>
-          <h3>Goals for the future</h3>
-          <p>Focus on scalable power electronics designs, production-level PCB workflows, and embedded systems that enable robust field deployments.</p>
-        </article>
+    <!-- HOME SECTIONS -->
+    <section id="home-sections" class="section-grid" data-reveal>
 
-        <article class="card" data-reveal>
-          <h3>Greatest accomplishments</h3>
-          <p>Developed the QUAD Pro communication prototype, contributed to aerospace-related biofuel research, and led multi-disciplinary prototype builds.</p>
-        </article>
+      <article class="card">
+        <h3>What I’m Learning</h3>
+        <p>
+          Power electronics, system-level design, embedded firmware,
+          and the realities of building reliable hardware beyond theory.
+        </p>
+      </article>
 
-        <article class="card" data-reveal>
-          <h3>Hurdles to accomplish</h3>
-          <p>Scaling prototypes to production, improving power-efficiency under constraints, and building resilient communication stacks for low-connectivity environments.</p>
-        </article>
-      </div>
+      <article class="card">
+        <h3>What I’ve Built</h3>
+        <p>
+          Prototypes spanning sensing, communication, power delivery,
+          and multi-disciplinary engineering challenges.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>What I’m Working Toward</h3>
+        <p>
+          Becoming a dependable engineer capable of designing systems
+          that are safe, scalable, and resilient in real environments.
+        </p>
+      </article>
+
     </section>
+
   </main>
 
   <footer class="site-footer">
-    <div class="container">© Ishan Pandhare</div>
+    <div class="container">
+      © <span id="year"></span> Ishan Pandhare
+    </div>
   </footer>
 
   <script>
-  (function(){
-    // safe: year element may not exist on this page; guard
-    const yearEl = document.getElementById('year'); if (yearEl) yearEl.textContent = new Date().getFullYear();
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
-    document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
-    const path = location.pathname.split('/').pop() || 'index.html';
-    const navLinks = Array.from(document.querySelectorAll('.nav a'));
-    navLinks.forEach(a=>{
-      const h=a.getAttribute('href'); if(h===path || (path==='index.html' && h==='index.html')) a.classList.add('active');
-      a.addEventListener('mousedown', ()=> a.classList.add('pressed'));
-      ['mouseup','mouseleave','blur'].forEach(ev=> a.addEventListener(ev, ()=> a.classList.remove('pressed')));
-      a.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') a.classList.add('pressed'); });
-      a.addEventListener('keyup', ()=> a.classList.remove('pressed'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    }
+
+    const navLinks = document.querySelectorAll('.nav a');
+    const indicator = document.querySelector('.nav-indicator');
+
+    function moveIndicator(target) {
+      if (!indicator) return;
+      const rect = target.getBoundingClientRect();
+      const navRect = target.parentElement.getBoundingClientRect();
+      indicator.style.width = rect.width + "px";
+      indicator.style.transform = `translateX(${rect.left - navRect.left}px)`;
+      indicator.style.opacity = "1";
+    }
+
+    navLinks.forEach(link => {
+      if (link.href === window.location.href) {
+        link.classList.add('active');
+        moveIndicator(link);
+      }
+      link.addEventListener('click', () => moveIndicator(link));
     });
-
-    // Nav indicator positioning
-    const nav = document.querySelector('.nav');
-    const indicator = nav && nav.querySelector('.nav-indicator');
-    function placeIndicator(target){
-      if(!indicator || !target) return;
-      const r = target.getBoundingClientRect();
-      const nr = nav.getBoundingClientRect();
-      const left = r.left - nr.left + nav.scrollLeft;
-      indicator.style.width = r.width + 'px';
-      indicator.style.transform = `translateX(${left}px)`;
-      indicator.style.opacity = '1';
-    }
-    const activeLink = navLinks.find(a=>a.classList.contains('active')) || navLinks[0];
-    placeIndicator(activeLink);
-    window.addEventListener('resize', ()=> placeIndicator(document.querySelector('.nav a.active') || document.querySelector('.nav a')));
-    navLinks.forEach(a=> a.addEventListener('click', ()=> placeIndicator(a)));
-
-    // Down-arrow smooth scroll handler
-    const down = document.querySelector('.down-arrow');
-    if(down){
-      down.addEventListener('click', function(e){
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
-      });
-    }
-  })();
   </script>
 </body>
 </html>
+  
