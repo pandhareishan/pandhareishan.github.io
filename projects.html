@@ -138,6 +138,14 @@
     window.addEventListener('resize', ()=> placeIndicator(document.querySelector('.nav a.active') || document.querySelector('.nav a')));
     navLinks.forEach(a=> a.addEventListener('click', ()=> placeIndicator(a)));
 
+    // project-specific mappings (thumb used for projects list, modalImage used inside details modal)
+    const projectMaps = {
+      'quad-pro': {
+        thumb: 'images/OWL.jpg',
+        modalImage: 'images/RPI User Interface.png'
+      }
+    };
+
     // Try to load project thumbnails from mappings or images/projects/{slug}.gif|jpg|png
     function tryLoadThumbs(){
       document.querySelectorAll('.project').forEach(article=>{
@@ -185,13 +193,6 @@
     tryLoadThumbs();
 
     // Project modal handling
-    // project-specific mappings (thumb used for projects list, modalImage used inside details modal)
-    const projectMaps = {
-      'quad-pro': {
-        thumb: 'images/OWL.jpg',
-        modalImage: 'images/RPI User Interface.png'
-      }
-    };
     const projectModal = document.getElementById('project-modal');
     const pmClose = document.getElementById('project-modal-close');
     const pmMedia = document.getElementById('pm-media');
