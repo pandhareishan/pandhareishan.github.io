@@ -150,6 +150,9 @@
         const map = projectMaps[slug];
         if(map && map.thumb){
           thumb.style.backgroundImage = `url('${encodeURI(map.thumb)}')`;
+          thumb.style.backgroundSize = 'contain';
+          thumb.style.backgroundRepeat = 'no-repeat';
+          thumb.style.backgroundPosition = 'center center';
           thumb.classList.remove('thumb--blue','thumb--green','thumb--teal','thumb--purple','thumb--warm');
           return;
         }
@@ -167,7 +170,7 @@
             return;
           }
           const img = new Image();
-          img.onload = ()=> { thumb.style.backgroundImage = `url('${encodeURI(src)}')`; thumb.classList.remove('thumb--blue','thumb--green','thumb--teal','thumb--purple','thumb--warm'); };
+          img.onload = ()=> { thumb.style.backgroundImage = `url('${encodeURI(src)}')`; thumb.style.backgroundSize = 'cover'; thumb.style.backgroundPosition = 'center center'; thumb.style.backgroundRepeat = 'no-repeat'; thumb.classList.remove('thumb--blue','thumb--green','thumb--teal','thumb--purple','thumb--warm'); };
           img.onerror = ()=> tryNext(list);
           img.src = encodeURI(src);
         })(candidates.slice());
@@ -217,6 +220,15 @@
     document.querySelectorAll('.proj-media').forEach(pm=>{
       pm.addEventListener('click', (e)=>{
         const article = pm.closest('.project');
+        if(article) openProject(article);
+      });
+    });
+
+    // ensure clicking the overlay also opens the modal (overlay may intercept clicks)
+    document.querySelectorAll('.proj-overlay').forEach(overlay=>{
+      overlay.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        const article = overlay.closest('.project');
         if(article) openProject(article);
       });
     });
