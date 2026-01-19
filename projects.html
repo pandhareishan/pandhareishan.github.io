@@ -65,7 +65,7 @@
 
         <article class="project" data-reveal data-slug="quad-pro">
           <div class="proj-media">
-            <div class="proj-thumb thumb--blue" aria-hidden="true" style="background-image:url('images/hero-board.jpg')"></div>
+            <div class="proj-thumb thumb--blue" aria-hidden="true" style="background-image:url('images/projects/quad-pro/OWL.jpg')"></div>
             <div class="proj-overlay">View</div>
           </div>
           <h4>QUAD Pro — Rural Communication</h4>
@@ -171,6 +171,13 @@
     tryLoadThumbs();
 
     // Project modal handling
+    // project-specific mappings (thumb used for projects list, modalImage used inside details modal)
+    const projectMaps = {
+      'quad-pro': {
+        thumb: 'images/projects/quad-pro/OWL.jpg',
+        modalImage: 'images/projects/quad-pro/RPI User Interface.png'
+      }
+    };
     const projectModal = document.getElementById('project-modal');
     const pmClose = document.getElementById('project-modal-close');
     const pmMedia = document.getElementById('pm-media');
@@ -186,7 +193,9 @@
       pmDesc.textContent = desc;
       pmLinks.innerHTML = article.querySelector('.small') ? article.querySelector('.small').innerHTML : '';
       pmMedia.innerHTML = '';
-      const candidates = slug ? [`images/projects/${slug}.gif`,`images/projects/${slug}.jpg`,`images/projects/${slug}.png`,`images/hero-board.jpg`] : ['images/hero-board.jpg'];
+      // prefer explicit modal image mapping if provided
+      const map = slug && projectMaps[slug];
+      const candidates = map ? [map.modalImage, `images/projects/${slug}.gif`, `images/projects/${slug}.jpg`, `images/projects/${slug}.png`, `images/hero-board.jpg`] : (slug ? [`images/projects/${slug}.gif`,`images/projects/${slug}.jpg`,`images/projects/${slug}.png`,`images/hero-board.jpg`] : ['images/hero-board.jpg']);
       (function tryNext(list){
         if(!list.length){ pmMedia.innerHTML = '<div style="padding:40px;color:var(--text-muted)">No preview available.</div>'; return; }
         const src = list.shift();
