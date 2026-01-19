@@ -210,7 +210,8 @@
       pmMedia.innerHTML = '';
       // prefer explicit modal image mapping if provided
       const map = slug && projectMaps[slug];
-      const candidates = map ? [encodeURI(map.modalImage), `images/projects/${slug}.gif`, `images/projects/${slug}.jpg`, `images/projects/${slug}.png`, `images/hero-board.jpg`] : (slug ? [`images/projects/${slug}.gif`,`images/projects/${slug}.jpg`,`images/projects/${slug}.png`,`images/hero-board.jpg`] : ['images/hero-board.jpg']);
+      // pass raw paths into candidates; img.src will be encoded once in tryNext
+      const candidates = map ? [map.modalImage, `images/projects/${slug}.gif`, `images/projects/${slug}.jpg`, `images/projects/${slug}.png`, `images/hero-board.jpg`] : (slug ? [`images/projects/${slug}.gif`,`images/projects/${slug}.jpg`,`images/projects/${slug}.png`,`images/hero-board.jpg`] : ['images/hero-board.jpg']);
       (function tryNext(list){
         if(!list.length){ pmMedia.innerHTML = '<div style="padding:40px;color:var(--text-muted)">No preview available.</div>'; return; }
         const src = list.shift();

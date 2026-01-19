@@ -45,6 +45,8 @@ body {
   max-width: var(--maxw);
   margin: auto;
   padding: 0 24px;
+  padding-left: calc(24px + env(safe-area-inset-left, 0px));
+  padding-right: calc(24px + env(safe-area-inset-right, 0px));
 }
 
 /* Header / Nav */
@@ -242,6 +244,11 @@ body {
   .proj-thumb{aspect-ratio:1/1}
   .project{padding:16px}
   .grid{grid-template-columns:1fr}
+}
+
+@media (max-width: 420px) {
+  .container { padding-left: calc(16px + env(safe-area-inset-left, 0px)); padding-right: calc(16px + env(safe-area-inset-right, 0px)); }
+  .header-inner { padding-top: 12px; padding-bottom: 10px; }
 }
 
 /* Footer */
