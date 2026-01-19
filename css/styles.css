@@ -251,6 +251,15 @@ body {
   .header-inner { padding-top: 12px; padding-bottom: 10px; }
 }
 
+/* Make project modal stack on smaller screens so images & text are not cut off */
+@media (max-width: 900px) {
+  .project-modal .modal-inner { flex-direction: column; max-width: 92vw; height: auto; }
+  .project-modal .pm-media { max-width: 100%; min-width: auto; min-height: 220px; padding: 12px; }
+  .project-modal .pm-media img, .project-modal .pm-media video { max-height: 60vh; width: 100%; height: auto; }
+  .project-modal .pm-content { width: auto; max-height: calc(90vh - 240px); overflow: auto; padding: 16px; }
+  .project-modal .modal-inner { gap: 12px; }
+}
+
 /* Footer */
 .site-footer {
   margin: 100px 0 40px;
