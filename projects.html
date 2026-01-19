@@ -138,7 +138,7 @@
     window.addEventListener('resize', ()=> placeIndicator(document.querySelector('.nav a.active') || document.querySelector('.nav a')));
     navLinks.forEach(a=> a.addEventListener('click', ()=> placeIndicator(a)));
 
-    // Try to load project thumbnails from images/projects/{slug}.gif|jpg|png
+    // Try to load project thumbnails from mappings or images/projects/{slug}.gif|jpg|png
     function tryLoadThumbs(){
       document.querySelectorAll('.project').forEach(article=>{
         const thumb = article.querySelector('.proj-thumb');
@@ -147,6 +147,12 @@
         if(thumb.style.backgroundImage && thumb.style.backgroundImage !== 'none') return;
         const slug = article.dataset.slug;
         if(!slug) return;
+        const map = projectMaps[slug];
+        if(map && map.thumb){
+          thumb.style.backgroundImage = `url('${encodeURI(map.thumb)}')`;
+          thumb.classList.remove('thumb--blue','thumb--green','thumb--teal','thumb--purple','thumb--warm');
+          return;
+        }
         const candidates = [`images/projects/${slug}.gif`,`images/projects/${slug}.mp4`,`images/projects/${slug}.jpg`,`images/projects/${slug}.png`];
         (function tryNext(list){
           if(!list.length) return;
@@ -155,15 +161,15 @@
             // for videos, just set a poster if exists
             const xhr = new XMLHttpRequest();
             xhr.open('HEAD', src);
-            xhr.onload = function(){ if(xhr.status===200) { thumb.style.backgroundImage = `url('${src}')`; }};
+            xhr.onload = function(){ if(xhr.status===200) { thumb.style.backgroundImage = `url('${encodeURI(src)}')`; }};
             xhr.onerror = ()=> tryNext(list);
             xhr.send();
             return;
           }
           const img = new Image();
-          img.onload = ()=> { thumb.style.backgroundImage = `url('${src}')`; thumb.classList.remove('thumb--blue','thumb--green','thumb--teal','thumb--purple','thumb--warm'); };
+          img.onload = ()=> { thumb.style.backgroundImage = `url('${encodeURI(src)}')`; thumb.classList.remove('thumb--blue','thumb--green','thumb--teal','thumb--purple','thumb--warm'); };
           img.onerror = ()=> tryNext(list);
-          img.src = src;
+          img.src = encodeURI(src);
         })(candidates.slice());
       });
     }
