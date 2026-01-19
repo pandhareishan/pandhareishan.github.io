@@ -199,6 +199,8 @@
     const pmTitle = document.getElementById('pm-title');
     const pmDesc = document.getElementById('pm-desc');
     const pmLinks = document.getElementById('pm-links');
+    // token to track latest media load so previous async loads don't overwrite
+    let projectLoadId = 0;
 
     function openProject(article){
       const slug = article.dataset.slug;
@@ -208,16 +210,34 @@
       pmDesc.textContent = desc;
       pmLinks.innerHTML = article.querySelector('.small') ? article.querySelector('.small').innerHTML : '';
       pmMedia.innerHTML = '';
+      // bump load token and remember for this open; handlers will ignore stale loads
+      const loadId = ++projectLoadId;
+      pmMedia.dataset.loadId = loadId;
       // prefer explicit modal image mapping if provided
       const map = slug && projectMaps[slug];
       // pass raw paths into candidates; img.src will be encoded once in tryNext
       const candidates = map ? [map.modalImage, `images/projects/${slug}.gif`, `images/projects/${slug}.jpg`, `images/projects/${slug}.png`, `images/hero-board.jpg`] : (slug ? [`images/projects/${slug}.gif`,`images/projects/${slug}.jpg`,`images/projects/${slug}.png`,`images/hero-board.jpg`] : ['images/hero-board.jpg']);
       (function tryNext(list){
-        if(!list.length){ pmMedia.innerHTML = '<div style="padding:40px;color:var(--text-muted)">No preview available.</div>'; return; }
+        if(!list.length){
+          // only show fallback if this load is still current
+          if(pmMedia.dataset.loadId == loadId) pmMedia.innerHTML = '<div style="padding:40px;color:var(--text-muted)">No preview available.</div>';
+          return;
+        }
         const src = list.shift();
         const img = new Image();
-        img.onload = ()=> { pmMedia.innerHTML = ''; img.alt = title; img.src = encodeURI(src); pmMedia.appendChild(img); };
-        img.onerror = ()=> tryNext(list);
+        img.onload = ()=> {
+          // ignore if a newer openProject was started
+          if(pmMedia.dataset.loadId != String(loadId)) return;
+          pmMedia.innerHTML = '';
+          img.alt = title;
+          img.src = encodeURI(src);
+          pmMedia.appendChild(img);
+        };
+        img.onerror = ()=> {
+          // ignore errors for stale loads
+          if(pmMedia.dataset.loadId != String(loadId)) return;
+          tryNext(list);
+        };
         img.src = encodeURI(src);
       })(candidates.slice());
 
