@@ -143,8 +143,6 @@
       document.querySelectorAll('.project').forEach(article=>{
         const thumb = article.querySelector('.proj-thumb');
         if(!thumb) return;
-        // if already has background-image, skip
-        if(thumb.style.backgroundImage && thumb.style.backgroundImage !== 'none') return;
         const slug = article.dataset.slug;
         if(!slug) return;
         const map = projectMaps[slug];
@@ -154,6 +152,13 @@
           thumb.style.backgroundRepeat = 'no-repeat';
           thumb.style.backgroundPosition = 'center center';
           thumb.classList.remove('thumb--blue','thumb--green','thumb--teal','thumb--purple','thumb--warm');
+          return;
+        }
+        // if already has background-image, normalize sizing and position
+        if(thumb.style.backgroundImage && thumb.style.backgroundImage !== 'none'){
+          thumb.style.backgroundSize = 'contain';
+          thumb.style.backgroundPosition = 'center center';
+          thumb.style.backgroundRepeat = 'no-repeat';
           return;
         }
         const candidates = [`images/projects/${slug}.gif`,`images/projects/${slug}.mp4`,`images/projects/${slug}.jpg`,`images/projects/${slug}.png`];
@@ -204,14 +209,14 @@
       pmMedia.innerHTML = '';
       // prefer explicit modal image mapping if provided
       const map = slug && projectMaps[slug];
-      const candidates = map ? [map.modalImage, `images/projects/${slug}.gif`, `images/projects/${slug}.jpg`, `images/projects/${slug}.png`, `images/hero-board.jpg`] : (slug ? [`images/projects/${slug}.gif`,`images/projects/${slug}.jpg`,`images/projects/${slug}.png`,`images/hero-board.jpg`] : ['images/hero-board.jpg']);
+      const candidates = map ? [encodeURI(map.modalImage), `images/projects/${slug}.gif`, `images/projects/${slug}.jpg`, `images/projects/${slug}.png`, `images/hero-board.jpg`] : (slug ? [`images/projects/${slug}.gif`,`images/projects/${slug}.jpg`,`images/projects/${slug}.png`,`images/hero-board.jpg`] : ['images/hero-board.jpg']);
       (function tryNext(list){
         if(!list.length){ pmMedia.innerHTML = '<div style="padding:40px;color:var(--text-muted)">No preview available.</div>'; return; }
         const src = list.shift();
         const img = new Image();
-        img.onload = ()=> { pmMedia.innerHTML = ''; img.alt = title; pmMedia.appendChild(img); };
+        img.onload = ()=> { pmMedia.innerHTML = ''; img.alt = title; img.src = encodeURI(src); pmMedia.appendChild(img); };
         img.onerror = ()=> tryNext(list);
-        img.src = src;
+        img.src = encodeURI(src);
       })(candidates.slice());
 
       projectModal.classList.add('open'); projectModal.setAttribute('aria-hidden','false');
