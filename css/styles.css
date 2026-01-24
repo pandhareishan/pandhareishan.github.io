@@ -196,8 +196,8 @@ body {
 /* Projects: card polish */
 .project{padding:22px;border-radius:14px;background:linear-gradient(180deg, #ffffff, #fbfdff);border:1px solid rgba(15,23,42,0.04);transition:transform .22s cubic-bezier(.2,.9,.2,1),box-shadow .22s ease}
 .project:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(15,23,42,0.06)}
-.project h4{margin:0 0 8px;display:none}
-.project p:not(.proj-badge ~ *),.project > .small{display:none}
+.project h4{margin:0 0 8px}
+.project > p:not(.proj-badge),.project > .small{display:none}
 .proj-badge{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#3d0066;font-weight:700;margin-bottom:10px;font-size:13px}
 
 /* Project thumbnails */
