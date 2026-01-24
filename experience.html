@@ -50,6 +50,38 @@
           <p class="meta">UI/UX + Frontend</p>
           <p>Led UI/UX development efforts and coordinated a small team to produce intuitive front-end interfaces. Facilitated cross-team meetings, prototyped designs, and helped deliver a functional application on schedule.</p>
         </div>
+
+        <div class="item" data-reveal>
+          <div class="date">August 2019 — June 2023</div>
+          <h3>Student — Sage Creek High School</h3>
+          <p class="meta">PLTW Four-Year Engineering Pathway</p>
+          <button class="expand-btn" onclick="toggleDetails(this)">
+            <span class="arrow">▼</span>
+            <span>More</span>
+          </button>
+          <div class="details" style="display: none; margin-top: 16px;">
+            <div class="course">
+              <h4>Introduction to Engineering Design</h4>
+              <p>Learned the engineering design process—defining problems, brainstorming solutions, and using 3D modeling software (CAD) to visualize, analyze, and communicate designs. Gained foundational skills in technical documentation, teamwork, and prototyping.</p>
+              <p><strong>Tools:</strong> Autodesk Inventor, Fusion 360, SketchUp</p>
+            </div>
+            <div class="course">
+              <h4>Principles of Engineering</h4>
+              <p>Explored core engineering principles like mechanisms, structures, and automation and applied them to real challenges. Strengthened ability to solve complex problems, conduct research, document processes, and collaborate on multidisciplinary design projects.</p>
+              <p><strong>Focus:</strong> Research methodologies, engineering branches, technical documentation, and engineering notebooks</p>
+            </div>
+            <div class="course">
+              <h4>AP Computer Science Principles</h4>
+              <p>Developed computational thinking and programming skills, learning how computing and algorithms drive modern technology. Covered fundamental concepts such as data, abstraction, algorithms, and societal impacts of computing through project-based assignments.</p>
+              <p><strong>Languages:</strong> Python, HTML, CSS, Java</p>
+            </div>
+            <div class="course">
+              <h4>Engineering Design and Development (Capstone)</h4>
+              <p>Synthesized everything learned to research, prototype, test, and present an original engineering solution to a real-world problem. Collaborated with peers and mentors, refined technical and communication skills, and experienced a professional-style project lifecycle from concept to final presentation.</p>
+              <p><strong>Project:</strong> Automated Faucet Attachment — Arduino Uno, PCB design, servo motor control, and 3D-printed enclosure</p>
+            </div>
+          </div>
+        </div>
       </div>
 
     </section>
@@ -99,6 +131,15 @@
     window.addEventListener('resize', ()=> placeIndicator(document.querySelector('.nav a.active') || document.querySelector('.nav a')));
     navLinks.forEach(a=> a.addEventListener('click', ()=> placeIndicator(a)));
   })();
+  </script>
+
+  <script>
+  function toggleDetails(btn) {
+    const details = btn.nextElementSibling;
+    const isOpen = details.style.display !== 'none';
+    details.style.display = isOpen ? 'none' : 'block';
+    btn.classList.toggle('open');
+  }
   </script>
 </body>
 </html>

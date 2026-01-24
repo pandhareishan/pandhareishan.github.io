@@ -305,3 +305,12 @@ body.page-resume .card { border-left: 6px solid rgba(213,128,255,0.10); }
 .skill-chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
 .skill-chips span{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#3d0066;padding:6px 10px;border-radius:999px;font-weight:600;font-size:13px}
 .testimonial{margin-top:14px;padding:16px;background:linear-gradient(180deg,#fff,#fbfdff);border-left:4px solid var(--accent-start);border-radius:10px;font-style:italic;color:var(--text-main)}
+/* Expandable timeline details */
+.expand-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#3d0066;border:none;padding:8px 14px;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;transition:transform 0.2s ease}
+.expand-btn:hover{transform:translateY(-2px)}
+.expand-btn .arrow{display:inline-block;transition:transform 0.3s ease}
+.expand-btn.open .arrow{transform:rotate(180deg)}
+.details{transition:max-height 0.3s ease,opacity 0.3s ease;overflow:hidden}
+.details .course{margin-bottom:18px;padding:14px;background:var(--surface-muted);border-radius:10px;border-left:3px solid var(--accent-solid)}
+.details .course h4{margin:0 0 8px;color:var(--accent-solid);font-size:15px}
+.details .course p{margin:6px 0;font-size:14px}
