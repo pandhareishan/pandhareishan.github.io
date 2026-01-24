@@ -36,25 +36,15 @@
       <button class="timeline-scroll-btn left" onclick="scrollTimeline('left')">‹</button>
       <div class="timeline-scroll">
         <div class="timeline-items">
-          <a href="#item-calpoly" class="timeline-item" onclick="scrollToItem(event)">
+          <a href="#item-sagecreek" class="timeline-item" onclick="scrollToItem(event)">
             <span class="timeline-dot"></span>
-            <span class="timeline-label">2023—Present</span>
-            <span class="timeline-title">Cal Poly</span>
+            <span class="timeline-label">2019—2023</span>
+            <span class="timeline-title">Sage Creek</span>
           </a>
-          <a href="#item-owl" class="timeline-item" onclick="scrollToItem(event)">
-            <span class="timeline-dot"></span>
-            <span class="timeline-label">May 2024—Sep 2024</span>
-            <span class="timeline-title">OWL Research</span>
-          </a>
-          <a href="#item-comet" class="timeline-item" onclick="scrollToItem(event)">
+          <a href="#proj-comet-card" class="timeline-item" onclick="scrollToItem(event)">
             <span class="timeline-dot"></span>
             <span class="timeline-label">Mar 2022—Jun 2022</span>
             <span class="timeline-title">Comet</span>
-          </a>
-          <a href="#item-sagecreek" class="timeline-item" onclick="scrollToItem(event)">
-            <span class="timeline-dot"></span>
-            <span class="timeline-label">Aug 2019—Jun 2023</span>
-            <span class="timeline-title">Sage Creek</span>
           </a>
           <a href="#proj-boeing" class="timeline-item" onclick="scrollToItem(event)">
             <span class="timeline-dot"></span>
@@ -71,6 +61,16 @@
             <span class="timeline-label">2023</span>
             <span class="timeline-title">Faucet</span>
           </a>
+          <a href="#item-calpoly" class="timeline-item" onclick="scrollToItem(event)">
+            <span class="timeline-dot"></span>
+            <span class="timeline-label">2023—Present</span>
+            <span class="timeline-title">Cal Poly</span>
+          </a>
+          <a href="#proj-owl-research" class="timeline-item" onclick="scrollToItem(event)">
+            <span class="timeline-dot"></span>
+            <span class="timeline-label">May 2024—Sep 2024</span>
+            <span class="timeline-title">OWL Research</span>
+          </a>
           <a href="#proj-owl" class="timeline-item" onclick="scrollToItem(event)">
             <span class="timeline-dot"></span>
             <span class="timeline-label">2024</span>
@@ -81,10 +81,42 @@
       <button class="timeline-scroll-btn right" onclick="scrollTimeline('right')">›</button>
     </div>
 
-    <!-- Experience Section -->
+    <!-- Education Section -->
     <section class="card">
-      <h2>Experience</h2>
+      <h2>Education</h2>
       <div class="vertical-timeline">
+        <div class="timeline-item-full" id="item-sagecreek" data-reveal>
+          <div class="date">August 2019 — June 2023</div>
+          <h3>Student @ Sage Creek High School</h3>
+          <p class="meta">PLTW Four-Year Engineering Pathway</p>
+          <button class="expand-btn" onclick="toggleDetails(this)">
+            <span class="arrow">▼</span>
+            <span>More</span>
+          </button>
+          <div class="details" style="display: none; margin-top: 16px;">
+            <div class="course">
+              <h4>Introduction to Engineering Design</h4>
+              <p>Learned the engineering design process—defining problems, brainstorming solutions, and using 3D modeling software (CAD) to visualize, analyze, and communicate designs. Gained foundational skills in technical documentation, teamwork, and prototyping.</p>
+              <p><strong>Tools:</strong> Autodesk Inventor, Fusion 360, SketchUp</p>
+            </div>
+            <div class="course">
+              <h4>Principles of Engineering</h4>
+              <p>Explored core engineering principles like mechanisms, structures, and automation and applied them to real challenges. Strengthened ability to solve complex problems, conduct research, document processes, and collaborate on multidisciplinary design projects.</p>
+              <p><strong>Focus:</strong> Research methodologies, engineering branches, technical documentation, and engineering notebooks</p>
+            </div>
+            <div class="course">
+              <h4>AP Computer Science Principles</h4>
+              <p>Developed computational thinking and programming skills, learning how computing and algorithms drive modern technology. Covered fundamental concepts such as data, abstraction, algorithms, and societal impacts of computing through project-based assignments.</p>
+              <p><strong>Languages:</strong> Python, HTML, CSS, Java</p>
+            </div>
+            <div class="course">
+              <h4>Engineering Design and Development (Capstone)</h4>
+              <p>Synthesized everything learned to research, prototype, test, and present an original engineering solution to a real-world problem. Collaborated with peers and mentors, refined technical and communication skills, and experienced a professional-style project lifecycle from concept to final presentation.</p>
+              <p><strong>Project:</strong> Automated Faucet Attachment — Arduino Uno, PCB design, servo motor control, and 3D-printed enclosure</p>
+            </div>
+          </div>
+        </div>
+
         <div class="timeline-item-full" id="item-calpoly" data-reveal>
           <div class="date">2023 — Present</div>
           <h3>Electrical Engineering Student @ Cal Poly</h3>
@@ -163,52 +195,6 @@
             </div>
           </div>
         </div>
-
-        <div class="timeline-item-full" id="item-owl" data-reveal>
-          <div class="date">May 2024 — Sep 2024</div>
-          <h3>Researcher @ OWL Integrations (CP SLO )</h3>
-          <p class="meta">California Polytechnic State University</p>
-          <p>Developed a web interface for QUAD Pro, a Raspberry Pi-based emergency rural communication system using LoRa. Built a local Flask interface with Redis Streams to transfer CDP packets and enable messaging over radio in connectivity-limited environments. Collaborated across disciplines to refine embedded networking and wireless protocol integration.</p>
-        </div>
-
-        <div class="timeline-item-full" id="item-comet" data-reveal>
-          <div class="date">Mar 2022 — Jun 2022</div>
-          <h3>Intern @ Comet</h3>
-          <p class="meta">UI/UX + Frontend</p>
-          <p>Led UI/UX development efforts and coordinated a small team to produce intuitive front-end interfaces. Facilitated cross-team meetings, prototyped designs, and helped deliver a functional application on schedule.</p>
-        </div>
-
-        <div class="timeline-item-full" id="item-sagecreek" data-reveal>
-          <div class="date">August 2019 — June 2023</div>
-          <h3>Student @ Sage Creek High School</h3>
-          <p class="meta">PLTW Four-Year Engineering Pathway</p>
-          <button class="expand-btn" onclick="toggleDetails(this)">
-            <span class="arrow">▼</span>
-            <span>More</span>
-          </button>
-          <div class="details" style="display: none; margin-top: 16px;">
-            <div class="course">
-              <h4>Introduction to Engineering Design</h4>
-              <p>Learned the engineering design process—defining problems, brainstorming solutions, and using 3D modeling software (CAD) to visualize, analyze, and communicate designs. Gained foundational skills in technical documentation, teamwork, and prototyping.</p>
-              <p><strong>Tools:</strong> Autodesk Inventor, Fusion 360, SketchUp</p>
-            </div>
-            <div class="course">
-              <h4>Principles of Engineering</h4>
-              <p>Explored core engineering principles like mechanisms, structures, and automation and applied them to real challenges. Strengthened ability to solve complex problems, conduct research, document processes, and collaborate on multidisciplinary design projects.</p>
-              <p><strong>Focus:</strong> Research methodologies, engineering branches, technical documentation, and engineering notebooks</p>
-            </div>
-            <div class="course">
-              <h4>AP Computer Science Principles</h4>
-              <p>Developed computational thinking and programming skills, learning how computing and algorithms drive modern technology. Covered fundamental concepts such as data, abstraction, algorithms, and societal impacts of computing through project-based assignments.</p>
-              <p><strong>Languages:</strong> Python, HTML, CSS, Java</p>
-            </div>
-            <div class="course">
-              <h4>Engineering Design and Development (Capstone)</h4>
-              <p>Synthesized everything learned to research, prototype, test, and present an original engineering solution to a real-world problem. Collaborated with peers and mentors, refined technical and communication skills, and experienced a professional-style project lifecycle from concept to final presentation.</p>
-              <p><strong>Project:</strong> Automated Faucet Attachment — Arduino Uno, PCB design, servo motor control, and 3D-printed enclosure</p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -217,6 +203,17 @@
       <h2>Projects</h2>
       <p class="projects-cta">Click a project to learn more!</p>
       <div class="projects-grid">
+        <article class="project" id="proj-comet-card" data-reveal data-slug="comet">
+          <div class="proj-media">
+            <div class="proj-thumb thumb--mint" aria-hidden="true"></div>
+            <div class="proj-overlay">View</div>
+          </div>
+          <h4>Comet - UI/UX Internship</h4>
+          <div class="proj-badge">Internship</div>
+          <p>Led UI/UX development efforts and coordinated a small team to produce intuitive front-end interfaces. Facilitated cross-team meetings, prototyped designs, and helped deliver a functional application on schedule. Gained hands-on experience in design systems, user research, and iterative design refinement.</p>
+          <p class="small"><a href="#">Details</a></p>
+        </article>
+
         <article class="project" id="proj-boeing" data-reveal data-slug="boeing-algae-biofuel">
           <div class="proj-media">
             <div class="proj-thumb thumb--teal" aria-hidden="true"></div>
@@ -250,14 +247,25 @@
           <p class="small"><a href="#">Repository / Details</a></p>
         </article>
 
-        <article class="project" id="proj-owl" data-reveal data-slug="quad-pro">
+        <article class="project" id="proj-owl-research" data-reveal data-slug="owl-research">
           <div class="proj-media">
-            <div class="proj-thumb thumb--blue" aria-hidden="true" style="background-image:url('images/OWL.jpg')"></div>
+            <div class="proj-thumb thumb--cyan" aria-hidden="true"></div>
             <div class="proj-overlay">View</div>
           </div>
-          <h4>OWL Integrations - WI-FI Pop-Up Interface</h4>
+          <h4>OWL Research - QUAD Pro Interface</h4>
           <div class="proj-badge">Research</div>
-          <p>Raspberry Pi + LoRa system for emergency messaging and CDP packet transfer. Web interface and messaging via Flask + Redis Streams.</p>
+          <p>Developed a web interface for QUAD Pro, a Raspberry Pi-based emergency rural communication system using LoRa. Built a local Flask interface with Redis Streams to transfer CDP packets and enable messaging over radio in connectivity-limited environments. Collaborated across disciplines to refine embedded networking and wireless protocol integration.</p>
+          <p class="small"><a href="#">Repository / Details</a></p>
+        </article>
+
+        <article class="project" id="proj-owl" data-reveal data-slug="owl-project">
+          <div class="proj-media">
+            <div class="proj-thumb thumb--blue" aria-hidden="true" style="background-image:url('images/OWL.jpg'); background-size:contain; background-position:center center; background-repeat:no-repeat;"></div>
+            <div class="proj-overlay">View</div>
+          </div>
+          <h4>OWL Project - WI-FI Pop-Up Interface</h4>
+          <div class="proj-badge">Research</div>
+          <p>Raspberry Pi + LoRa system for emergency messaging and CDP packet transfer. Web interface and messaging via Flask + Redis Streams for reliable communication in remote areas.</p>
           <p class="small"><a href="#">Repository / Details</a></p>
         </article>
       </div>
