@@ -314,3 +314,7 @@ body.page-resume .card { border-left: 6px solid rgba(213,128,255,0.10); }
 .details .course{margin-bottom:18px;padding:14px;background:var(--surface-muted);border-radius:10px;border-left:3px solid var(--accent-solid)}
 .details .course h4{margin:0 0 8px;color:var(--accent-solid);font-size:15px}
 .details .course p{margin:6px 0;font-size:14px}
+.subcourse-list{margin:0;padding:0}
+.course-list{list-style:none;padding:0;margin:0}
+.course-list li{padding:6px 0;font-size:13px;color:var(--text-main);margin-left:0}
+.course-list li:before{content:"• ";color:var(--accent-solid);font-weight:700;margin-right:8px}
