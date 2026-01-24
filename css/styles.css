@@ -196,7 +196,8 @@ body {
 /* Projects: card polish */
 .project{padding:22px;border-radius:14px;background:linear-gradient(180deg, #ffffff, #fbfdff);border:1px solid rgba(15,23,42,0.04);transition:transform .22s cubic-bezier(.2,.9,.2,1),box-shadow .22s ease}
 .project:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(15,23,42,0.06)}
-.project h4{margin:0 0 8px}
+.project h4{margin:0 0 8px;display:none}
+.project p:not(.proj-badge ~ *),.project > .small{display:none}
 .proj-badge{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#3d0066;font-weight:700;margin-bottom:10px;font-size:13px}
 
 /* Project thumbnails */
@@ -207,10 +208,12 @@ body {
 .proj-overlay{position:absolute;right:12px;bottom:12px;background:rgba(255,255,255,0.9);padding:8px 12px;border-radius:999px;font-weight:700;color:var(--text-main);opacity:0;transform:translateY(6px);transition:opacity .26s ease,transform .26s ease}
 .proj-media:hover .proj-overlay{opacity:1;transform:translateY(0)}
 .thumb--blue{background:linear-gradient(135deg,#f0ccff,#e6b3ff)}
+.thumb--cyan{background:linear-gradient(135deg,#d4f1f9,#b8e6f5)}
 .thumb--green{background:linear-gradient(135deg,#dfffe0,#c7f3d6)}
 .thumb--teal{background:linear-gradient(135deg,#dff6f8,#cfefff)}
 .thumb--purple{background:linear-gradient(135deg,#f6d9ff,#e8d9ff)}
 .thumb--warm{background:linear-gradient(135deg,#ffe9d0,#ffd6c1)}
+.thumb--mint{background:linear-gradient(135deg,#d4f0ed,#b8e6e3)}
 
 /* Timeline date style */
 .timeline .date{font-weight:700;color:var(--accent-solid);margin-bottom:6px}
