@@ -23,6 +23,7 @@
       <nav class="nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
         <a href="experience.html">Experience</a>
         <a href="resume.html">Resume</a>
         <span class="nav-indicator" aria-hidden="true"></span>
@@ -31,61 +32,12 @@
   </header>
 
   <main class="container">
-    <!-- Horizontal Timeline Navigation -->
-    <div class="timeline-nav" data-reveal>
-      <button class="timeline-scroll-btn left" onclick="scrollTimeline('left')">‹</button>
-      <div class="timeline-scroll">
-        <div class="timeline-items">
-          <a href="#item-calpoly" class="timeline-item" onclick="scrollToItem(event)">
-            <span class="timeline-dot"></span>
-            <span class="timeline-label">2023—Present</span>
-            <span class="timeline-title">Cal Poly</span>
-          </a>
-          <a href="#item-owl" class="timeline-item" onclick="scrollToItem(event)">
-            <span class="timeline-dot"></span>
-            <span class="timeline-label">May 2024—Sep 2024</span>
-            <span class="timeline-title">OWL Research</span>
-          </a>
-          <a href="#item-comet" class="timeline-item" onclick="scrollToItem(event)">
-            <span class="timeline-dot"></span>
-            <span class="timeline-label">Mar 2022—Jun 2022</span>
-            <span class="timeline-title">Comet</span>
-          </a>
-          <a href="#item-sagecreek" class="timeline-item" onclick="scrollToItem(event)">
-            <span class="timeline-dot"></span>
-            <span class="timeline-label">Aug 2019—Jun 2023</span>
-            <span class="timeline-title">Sage Creek</span>
-          </a>
-          <a href="#proj-boeing" class="timeline-item" onclick="scrollToItem(event)">
-            <span class="timeline-dot"></span>
-            <span class="timeline-label">2023</span>
-            <span class="timeline-title">Boeing Algae</span>
-          </a>
-          <a href="#proj-rube" class="timeline-item" onclick="scrollToItem(event)">
-            <span class="timeline-dot"></span>
-            <span class="timeline-label">2023</span>
-            <span class="timeline-title">Rube Goldberg</span>
-          </a>
-          <a href="#proj-faucet" class="timeline-item" onclick="scrollToItem(event)">
-            <span class="timeline-dot"></span>
-            <span class="timeline-label">2023</span>
-            <span class="timeline-title">Faucet</span>
-          </a>
-          <a href="#proj-owl" class="timeline-item" onclick="scrollToItem(event)">
-            <span class="timeline-dot"></span>
-            <span class="timeline-label">2024</span>
-            <span class="timeline-title">OWL Project</span>
-          </a>
-        </div>
-      </div>
-      <button class="timeline-scroll-btn right" onclick="scrollTimeline('right')">›</button>
-    </div>
-
-    <!-- Experience Section -->
     <section class="card">
       <h2>Experience</h2>
-      <div class="vertical-timeline">
-        <div class="timeline-item-full" id="item-calpoly" data-reveal>
+
+
+      <div class="timeline" data-reveal>
+        <div class="item" data-reveal>
           <div class="date">2023 — Present</div>
           <h3>Electrical Engineering Student @ Cal Poly</h3>
           <p class="meta">California Polytechnic University - San Luis Obispo</p>
@@ -164,21 +116,21 @@
           </div>
         </div>
 
-        <div class="timeline-item-full" id="item-owl" data-reveal>
+        <div class="item" data-reveal>
           <div class="date">May 2024 — Sep 2024</div>
           <h3>Researcher @ OWL Integrations (CP SLO )</h3>
           <p class="meta">California Polytechnic State University</p>
           <p>Developed a web interface for QUAD Pro, a Raspberry Pi-based emergency rural communication system using LoRa. Built a local Flask interface with Redis Streams to transfer CDP packets and enable messaging over radio in connectivity-limited environments. Collaborated across disciplines to refine embedded networking and wireless protocol integration.</p>
         </div>
 
-        <div class="timeline-item-full" id="item-comet" data-reveal>
+        <div class="item" data-reveal>
           <div class="date">Mar 2022 — Jun 2022</div>
           <h3>Intern @ Comet</h3>
           <p class="meta">UI/UX + Frontend</p>
           <p>Led UI/UX development efforts and coordinated a small team to produce intuitive front-end interfaces. Facilitated cross-team meetings, prototyped designs, and helped deliver a functional application on schedule.</p>
         </div>
 
-        <div class="timeline-item-full" id="item-sagecreek" data-reveal>
+        <div class="item" data-reveal>
           <div class="date">August 2019 — June 2023</div>
           <h3>Student @ Sage Creek High School</h3>
           <p class="meta">PLTW Four-Year Engineering Pathway</p>
@@ -210,57 +162,7 @@
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section class="card">
-      <h2>Projects</h2>
-      <p class="projects-cta">Click a project to learn more!</p>
-      <div class="projects-grid">
-        <article class="project" id="proj-boeing" data-reveal data-slug="boeing-algae-biofuel">
-          <div class="proj-media">
-            <div class="proj-thumb thumb--teal" aria-hidden="true"></div>
-            <div class="proj-overlay">View</div>
-          </div>
-          <h4>Boeing Algae to Biofuel Research</h4>
-          <div class="proj-badge">Research</div>
-          <p>Designed and prototyped a circuit board capable of lysing algae cells using 400 V to extract bio-compounds for fuel production. Implemented parallel plate capacitor arcs and developed chamber concepts for scalable extraction.</p>
-          <p class="small"><a href="#">Repository / Details</a></p>
-        </article>
-
-        <article class="project" id="proj-rube" data-reveal data-slug="rube-goldberg-machine">
-          <div class="proj-media">
-            <div class="proj-thumb thumb--purple" aria-hidden="true"></div>
-            <div class="proj-overlay">View</div>
-          </div>
-          <h4>Rube Goldberg Machine</h4>
-          <div class="proj-badge">Team Project</div>
-          <p>Project-managed a multi-stage Rube Goldberg integrating multiple electronic subsystems (capacitive-touch piano, light detection, strobe lighting, metal detector). Led fabrication using Fusion 360 and testing with scopes and multimeters.</p>
-          <p class="small"><a href="#">Repository / Details</a></p>
-        </article>
-
-        <article class="project" id="proj-faucet" data-reveal data-slug="automated-faucet-attachment">
-          <div class="proj-media">
-            <div class="proj-thumb thumb--warm" aria-hidden="true"></div>
-            <div class="proj-overlay">View</div>
-          </div>
-          <h4>Automated Faucet Attachment</h4>
-          <div class="proj-badge">Class Project</div>
-          <p>Designed a servo-actuated faucet attachment and a PCB timer with seven-segment display. Implemented digital logic for actuation and refined mechanical tolerances through testing.</p>
-          <p class="small"><a href="#">Repository / Details</a></p>
-        </article>
-
-        <article class="project" id="proj-owl" data-reveal data-slug="quad-pro">
-          <div class="proj-media">
-            <div class="proj-thumb thumb--blue" aria-hidden="true" style="background-image:url('images/OWL.jpg')"></div>
-            <div class="proj-overlay">View</div>
-          </div>
-          <h4>OWL Integrations - WI-FI Pop-Up Interface</h4>
-          <div class="proj-badge">Research</div>
-          <p>Raspberry Pi + LoRa system for emergency messaging and CDP packet transfer. Web interface and messaging via Flask + Redis Streams.</p>
-          <p class="small"><a href="#">Repository / Details</a></p>
-        </article>
-      </div>
     </section>
   </main>
 
@@ -268,38 +170,21 @@
     <div class="container">© <span id="year"></span> Ishan Pandhare</div>
   </footer>
 
-  <!-- project details modal -->
-  <div class="project-modal" id="project-modal" aria-hidden="true">
-    <div class="modal-inner">
-      <button class="close-btn" id="project-modal-close">✕</button>
-      <div class="pm-media" id="pm-media" aria-hidden="true"></div>
-      <div class="pm-content">
-        <h3 class="pm-title" id="pm-title"></h3>
-        <div class="pm-desc" id="pm-desc"></div>
-        <p class="pm-links" id="pm-links"></p>
-      </div>
-    </div>
-  </div>
-
   <script>
   (function(){
     document.getElementById('year').textContent = new Date().getFullYear();
     const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    // Stagger reveals
-    document.querySelectorAll('[data-reveal]').forEach((el,i)=> el.style.setProperty('--delay', `${i*80}ms`));
-    
+    // stagger timeline items
+    document.querySelectorAll('.timeline .item').forEach((el,i)=> el.style.setProperty('--delay', `${i * 120}ms`));
     if (!prefersReduced) {
       const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
       document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
     } else {
       document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('in-view'));
     }
-    
     const path = location.pathname.split('/').pop() || 'index.html';
     const pageName = (path === 'index.html' || path === '') ? 'home' : path.replace('.html','');
     document.body.classList.add('page-' + pageName);
-    
     const navLinks = Array.from(document.querySelectorAll('.nav a'));
     navLinks.forEach(a=>{
       const h=a.getAttribute('href'); if(h===path || (path==='index.html' && h==='index.html')) a.classList.add('active');
@@ -324,71 +209,6 @@
     placeIndicator(activeLink);
     window.addEventListener('resize', ()=> placeIndicator(document.querySelector('.nav a.active') || document.querySelector('.nav a')));
     navLinks.forEach(a=> a.addEventListener('click', ()=> placeIndicator(a)));
-
-    // Project modal handling
-    const projectModal = document.getElementById('project-modal');
-    const pmClose = document.getElementById('project-modal-close');
-    const pmMedia = document.getElementById('pm-media');
-    const pmTitle = document.getElementById('pm-title');
-    const pmDesc = document.getElementById('pm-desc');
-    const pmLinks = document.getElementById('pm-links');
-    let projectLoadId = 0;
-
-    const projectMaps = {
-      'quad-pro': {
-        thumb: 'images/OWL.jpg',
-        modalImage: 'images/rpi-user-interface.png'
-      }
-    };
-
-    function openProject(article){
-      const slug = article.dataset.slug;
-      const title = article.querySelector('h4') && article.querySelector('h4').textContent || '';
-      const desc = article.querySelector('p') && article.querySelector('p').textContent || '';
-      pmTitle.textContent = title;
-      pmDesc.textContent = desc;
-      pmLinks.innerHTML = article.querySelector('.small') ? article.querySelector('.small').innerHTML : '';
-      pmMedia.innerHTML = '';
-      const loadId = ++projectLoadId;
-      pmMedia.dataset.loadId = loadId;
-      const map = slug && projectMaps[slug];
-      const candidates = map ? [map.modalImage, `images/projects/${slug}.gif`, `images/projects/${slug}.jpg`, `images/projects/${slug}.png`, `images/hero-board.jpg`] : (slug ? [`images/projects/${slug}.gif`,`images/projects/${slug}.jpg`,`images/projects/${slug}.png`,`images/hero-board.jpg`] : ['images/hero-board.jpg']);
-      
-      (function tryNext(list){
-        if(!list.length){
-          if(pmMedia.dataset.loadId == loadId) pmMedia.innerHTML = '<div style="padding:40px;color:var(--text-muted)">No preview available.</div>';
-          return;
-        }
-        const src = list.shift();
-        const img = new Image();
-        img.onload = ()=> {
-          if(pmMedia.dataset.loadId != String(loadId)) return;
-          pmMedia.innerHTML = '';
-          img.alt = title;
-          img.src = encodeURI(src);
-          pmMedia.appendChild(img);
-        };
-        img.onerror = ()=> {
-          if(pmMedia.dataset.loadId != String(loadId)) return;
-          tryNext(list);
-        };
-        img.src = encodeURI(src);
-      })(candidates.slice());
-
-      projectModal.classList.add('open'); projectModal.setAttribute('aria-hidden','false');
-    }
-
-    document.querySelectorAll('.proj-media').forEach(pm=>{
-      pm.addEventListener('click', (e)=>{
-        const article = pm.closest('.project');
-        if(article) openProject(article);
-      });
-    });
-
-    function closeProject(){ projectModal.classList.remove('open'); projectModal.setAttribute('aria-hidden','true'); pmMedia.innerHTML=''; }
-    pmClose && pmClose.addEventListener('click', closeProject);
-    projectModal && projectModal.addEventListener('click', (e)=>{ if(e.target===projectModal) closeProject(); });
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeProject(); });
   })();
   </script>
 
@@ -398,25 +218,6 @@
     const isOpen = details.style.display !== 'none';
     details.style.display = isOpen ? 'none' : 'block';
     btn.classList.toggle('open');
-  }
-
-  function scrollTimeline(direction) {
-    const scroll = document.querySelector('.timeline-scroll');
-    const amount = 300;
-    if(direction === 'left') {
-      scroll.scrollBy({ left: -amount, behavior: 'smooth' });
-    } else {
-      scroll.scrollBy({ left: amount, behavior: 'smooth' });
-    }
-  }
-
-  function scrollToItem(event) {
-    event.preventDefault();
-    const href = event.currentTarget.getAttribute('href');
-    const target = document.querySelector(href);
-    if(target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
   }
   </script>
 </body>
