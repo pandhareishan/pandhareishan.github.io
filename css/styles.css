@@ -186,7 +186,7 @@ body {
 .project-modal{position:fixed;inset:0;display:flex;align-items:flex-start;justify-content:center;padding-top:calc(env(safe-area-inset-top,0px) + 96px);background:rgba(6,10,18,0.6);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .22s ease;z-index:500}
 .project-modal.open{opacity:1;pointer-events:auto}
 .project-modal .modal-inner{position:relative;max-width:92vw;max-height:90vh;border-radius:14px;overflow:hidden;background:var(--surface);box-shadow:0 30px 80px rgba(2,6,23,0.6);display:flex;gap:18px}
-.project-modal .pm-media{flex:1;min-width:320px;max-width:60%;background:#0f172a20;display:flex;align-items:center;justify-content:center;overflow:auto}
+.project-modal .pm-media{flex:1;min-width:320px;max-width:60%;height:calc(90vh - 120px);background:#0f172a20;display:flex;align-items:center;justify-content:center;overflow:auto}
 .project-modal .pm-media img,.project-modal .pm-media video{max-width:100%;object-fit:contain;display:block;max-height:calc(90vh - 120px)}
 .project-modal .pm-content{width:420px;padding:20px;overflow:auto;max-height:calc(90vh - 120px)}
 .project-modal .pm-title{font-size:20px;margin:0 0 8px}
