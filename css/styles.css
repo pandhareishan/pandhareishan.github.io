@@ -40,6 +40,32 @@ body {
   line-height: 1.6;
 }
 
+/* About page refresh (serif-led, centered layout) */
+body.page-about { background: #ffffff; color: #2f2b28; }
+body.page-about .site-header { background: #ffffff; border-bottom: 1px solid #e7dfd8; box-shadow: none; }
+body.page-about .header-inner { padding: 18px 0 14px; }
+body.page-about .name { font-size: 16px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; color: #2f2b28; }
+body.page-about .role { display: none; }
+body.page-about .nav a { color: #7d6d63; font-weight: 500; letter-spacing: 0.25px; }
+body.page-about .nav a:hover { background: rgba(124,107,99,0.08); color: #2f2b28; }
+body.page-about .nav a.active { background: rgba(124,107,99,0.14); color: #2f2b28; }
+.about-shell { max-width: 980px; margin: 0 auto; padding: 96px 24px 140px; }
+.about-hero { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.about-photo img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 8px solid #f3ede7; box-shadow: 0 18px 50px rgba(0,0,0,0.08); background: #e6e0d8; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.about-photo img:hover { transform: translateY(-4px); box-shadow: 0 24px 70px rgba(0,0,0,0.12); }
+.about-greeting { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 28px; font-weight: 600; letter-spacing: 0.4px; margin: 0; color: #2f2b28; }
+.about-summary { max-width: 760px; margin: 0 auto; font-size: 16px; line-height: 1.85; color: #524740; }
+.about-press { margin-top: 12px; font-size: 14px; color: #7d6d63; font-style: italic; }
+.about-press span { font-weight: 600; }
+.about-press a { color: #7d6d63; text-decoration: none; padding: 0 8px; }
+.about-press a:hover { text-decoration: underline; }
+
+@media (max-width: 700px) {
+  .about-shell { padding: 72px 20px 100px; }
+  .about-photo img { width: 170px; height: 170px; }
+  .about-summary { font-size: 15px; line-height: 1.8; }
+}
+
 /* Layout */
 .container {
   max-width: var(--maxw);
