@@ -110,6 +110,16 @@ main, .site-footer { position: relative; z-index: 1; }
   color: var(--text-muted);
 }
 
+.footer-lightning{
+  display:block;
+  margin:12px auto 0;
+  width:160px;
+  height:auto;
+  transform: rotate(90deg);
+  opacity:0.9;
+  filter: drop-shadow(0 6px 14px rgba(59,130,246,0.35));
+}
+
 /* About page refresh (serif-led, centered layout) */
 body.page-about { background: #ffffff; color: #2f2b28; }
 body.page-about .site-header { background: #ffffff; border-bottom: 1px solid #e7dfd8; box-shadow: none; }
