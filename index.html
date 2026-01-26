@@ -115,7 +115,8 @@
         ctx.strokeStyle = 'rgba(31,41,55,0.7)';
         ctx.shadowColor = 'rgba(15,23,42,0.14)';
         ctx.shadowBlur = 4;
-        ctx.font = `190px "Allura", "Cormorant Garamond", Georgia, serif`;
+        const fontSize = Math.min(190, Math.max(100, rect.width * 0.28));
+        ctx.font = `${fontSize}px "Allura", "Cormorant Garamond", Georgia, serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         dash = rect.width * 0.7;
