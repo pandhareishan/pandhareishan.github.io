@@ -67,6 +67,19 @@ main, .site-footer { position: relative; z-index: 1; }
 .hero-image img{width:100%;height:100%;object-fit:cover;display:block}
 .hero-image--small{height:180px}
 
+.media-credit{
+  margin: 6px auto 0;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+.media-credit a{
+  color: inherit;
+  text-decoration: underline;
+}
+
 @media (prefers-reduced-motion: reduce) {
   body::before { animation: none; opacity: 0.3; }
 }
