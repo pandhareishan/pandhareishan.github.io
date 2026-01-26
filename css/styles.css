@@ -146,21 +146,13 @@ main, .site-footer { position: relative; z-index: 1; }
   cursor: pointer;
 }
 
-.footer-lightning{
-  display:block;
-  margin:6px auto 0;
-  width:190px;
-  height:auto;
-  opacity:0.75;
-  filter: drop-shadow(0 6px 14px rgba(59,130,246,0.25));
-}
 
 /* About page refresh (serif-led, centered layout) */
 body.page-about { background: #ffffff; color: #2f2b28; }
 body.page-about .site-header { background: #ffffff; border-bottom: 1px solid #e7dfd8; box-shadow: none; }
 body.page-about .header-inner { padding: 18px 0 14px; }
 body.page-about .name { color: #2f2b28; }
-body.page-about .role { display: none; }
+body.page-about .role { display: block; }
 body.page-about .nav a { color: #7d6d63; font-weight: 500; letter-spacing: 0.25px; }
 body.page-about .nav a:hover { background: rgba(124,107,99,0.08); color: #2f2b28; }
 body.page-about .nav a.active { background: rgba(124,107,99,0.14); color: #2f2b28; }

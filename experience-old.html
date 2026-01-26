@@ -26,8 +26,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <img src="images/MAIN_FAVICON.png?v=2" alt="Favicon" style="width: 40px; height: 40px; border-radius: 50%;">
+        <div>
           <h1 class="name">Ishan Pandhare</h1>
         </div>
         <p class="role">Electrical Engineering Student</p>
@@ -178,10 +177,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      © <span id="year"></span> Ishan Pandhare
-      <img class="footer-lightning" src="images/lightning-horizontal.gif" alt="">
-    </div>
+    <div class="container">© <span id="year"></span> Ishan Pandhare</div>
   </footer>
 
   <script>
@@ -193,65 +189,43 @@
       const skipBtn = document.getElementById('signature-skip');
       if (!overlay || !canvas) return;
 
-      const seenKey = 'signatureIntroSeen';
-      if (localStorage.getItem(seenKey) === 'true') {
-        overlay.classList.add('hidden');
-        return;
-      }
-
       const ctx = canvas.getContext('2d');
       let rect = canvas.getBoundingClientRect();
-      const base = [
-        [0.08, 0.55], [0.12, 0.5], [0.14, 0.42], [0.16, 0.34], [0.18, 0.28], [0.2, 0.24],
-        [0.22, 0.3], [0.22, 0.38], [0.22, 0.48], [0.22, 0.56],
-        [0.26, 0.46], [0.32, 0.42], [0.38, 0.43], [0.44, 0.5], [0.5, 0.54],
-        [0.56, 0.46], [0.6, 0.4], [0.64, 0.42], [0.68, 0.5], [0.72, 0.54],
-        [0.78, 0.48], [0.84, 0.44], [0.9, 0.46], [0.95, 0.5]
-      ];
-      let points = [];
-      function updatePoints(){
-        points = base.map(([x, y]) => [x * rect.width, y * rect.height]);
-      }
       function resize(){
         rect = canvas.getBoundingClientRect();
         canvas.width = rect.width * window.devicePixelRatio;
         canvas.height = rect.height * window.devicePixelRatio;
         ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-        updatePoints();
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.lineWidth = 18;
+        ctx.strokeStyle = 'rgba(15,23,42,0.9)';
+        ctx.font = `160px "Cormorant Garamond", Georgia, serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
       }
       resize();
       window.addEventListener('resize', resize);
-
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
-      ctx.lineWidth = 18;
-      ctx.strokeStyle = 'rgba(15,23,42,0.9)';
-
-      let i = 1;
-      ctx.beginPath();
-      ctx.moveTo(points[0][0], points[0][1]);
-
+      let dash = rect.width * 2;
       function draw(){
-        if (i >= points.length) {
+        ctx.clearRect(0, 0, rect.width, rect.height);
+        ctx.setLineDash([dash, dash]);
+        ctx.lineDashOffset = -dash;
+        ctx.strokeText('Ishan', rect.width / 2, rect.height / 2);
+        dash -= rect.width / 25;
+        if (dash > 0) {
+          requestAnimationFrame(draw);
+        } else {
           finish();
-          return;
         }
-        const [x, y] = points[i];
-        ctx.lineTo(x, y);
-        ctx.stroke();
-        i++;
-        requestAnimationFrame(draw);
       }
 
       function finish(){
-        localStorage.setItem(seenKey, 'true');
-        setTimeout(()=> overlay.classList.add('hidden'), 500);
+        overlay.classList.add('hidden');
+        setTimeout(()=> overlay.remove(), 700);
       }
 
-      skipBtn && skipBtn.addEventListener('click', ()=>{
-        localStorage.setItem(seenKey, 'true');
-        overlay.classList.add('hidden');
-      });
+      skipBtn && skipBtn.addEventListener('click', finish);
 
       overlay.setAttribute('aria-hidden', 'false');
       requestAnimationFrame(draw);
