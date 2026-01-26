@@ -86,13 +86,13 @@
       }
       resize();
       window.addEventListener('resize', resize);
-      let dash = rect.width * 1.2;
+      let dash = rect.width * 0.7;
       function draw(){
         ctx.clearRect(0, 0, rect.width, rect.height);
         ctx.setLineDash([dash, dash]);
         ctx.lineDashOffset = -dash;
         ctx.strokeText('Ishan', rect.width / 2, rect.height / 2);
-        dash -= rect.width / 90;
+        dash -= rect.width / 70;
         if (dash > 0) {
           requestAnimationFrame(draw);
         } else {
@@ -102,7 +102,7 @@
 
       function finish(){
         overlay.classList.add('hidden');
-        setTimeout(()=> overlay.remove(), 700);
+        setTimeout(()=> overlay.remove(), 500);
       }
 
       skipBtn && skipBtn.addEventListener('click', finish);
