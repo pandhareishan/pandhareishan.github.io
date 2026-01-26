@@ -112,11 +112,11 @@ main, .site-footer { position: relative; z-index: 1; }
 
 .footer-lightning{
   display:block;
-  margin:12px auto 0;
-  width:220px;
+  margin:6px auto 0;
+  width:190px;
   height:auto;
-  opacity:0.9;
-  filter: drop-shadow(0 6px 14px rgba(59,130,246,0.35));
+  opacity:0.75;
+  filter: drop-shadow(0 6px 14px rgba(59,130,246,0.25));
 }
 
 /* About page refresh (serif-led, centered layout) */
