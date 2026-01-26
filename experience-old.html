@@ -183,6 +183,7 @@
 
       const ctx = canvas.getContext('2d');
       let rect = canvas.getBoundingClientRect();
+      let dash = 0;
       function resize(){
         rect = canvas.getBoundingClientRect();
         canvas.width = rect.width * window.devicePixelRatio;
@@ -197,10 +198,10 @@
         ctx.font = `190px "Allura", "Cormorant Garamond", Georgia, serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
+        dash = rect.width * 0.7;
       }
       resize();
       window.addEventListener('resize', resize);
-      let dash = rect.width * 0.7;
       function draw(){
         ctx.clearRect(0, 0, rect.width, rect.height);
         ctx.setLineDash([dash, dash]);
