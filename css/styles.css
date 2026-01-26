@@ -40,10 +40,11 @@ body {
 main, .site-footer { position: relative; z-index: 1; }
 
 .name {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  letter-spacing: 0.4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 /* hero image between hero and sections */
@@ -192,7 +193,7 @@ main, .site-footer { position: relative; z-index: 1; }
 body.page-about { background: #ffffff; color: #2f2b28; }
 body.page-about .site-header { background: #ffffff; border-bottom: 1px solid #e7dfd8; box-shadow: none; }
 body.page-about .header-inner { padding: 18px 0 14px; }
-body.page-about .name { font-size: 16px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; color: #2f2b28; }
+body.page-about .name { color: #2f2b28; }
 body.page-about .role { display: none; }
 body.page-about .nav a { color: #7d6d63; font-weight: 500; letter-spacing: 0.25px; }
 body.page-about .nav a:hover { background: rgba(124,107,99,0.08); color: #2f2b28; }
@@ -351,7 +352,7 @@ body.page-about .nav a.active { background: rgba(124,107,99,0.14); color: #2f2b2
 .about-image img:hover{transform:scale(1.06);box-shadow:0 22px 48px rgba(15,23,42,0.10)}
 
 /* full-screen image modal */
-.img-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(6,10,18,0.6);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .22s ease}
+.img-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(6,10,18,0.6);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .22s ease;z-index:999}
 .img-modal.open{opacity:1;pointer-events:auto}
 .img-modal .modal-inner{position:relative;max-width:90vw;max-height:90vh;overflow:visible;box-shadow:none;padding:0;background:transparent;display:flex;align-items:center;justify-content:center}
 .img-modal img{width:min(80vw,480px);height:min(80vw,480px);object-fit:cover;display:block;border-radius:50%;padding:8px;background:linear-gradient(135deg,#f0e4ff,#cfa8ff);border:10px solid rgba(255,255,255,0.94);box-shadow:0 34px 88px rgba(2,6,23,0.55)}
