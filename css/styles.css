@@ -56,8 +56,8 @@ main, .site-footer { position: relative; z-index: 1; }
   position: absolute;
   bottom: -120px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(213,128,255,0.18));
-  opacity: 0.6;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(213,128,255,0.28));
+  opacity: 0.78;
   animation: bubble-float 18s ease-in-out infinite;
   filter: blur(0.2px);
 }
@@ -75,8 +75,40 @@ main, .site-footer { position: relative; z-index: 1; }
   100% { transform: translateY(-120vh) translateX(20px); opacity: 0; }
 }
 
+/* Aurora background layer */
+.aurora-layer{
+  position: fixed;
+  inset: -20vh -10vw;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.45;
+  filter: blur(28px) saturate(1.1);
+}
+.aurora-layer .aurora{
+  position:absolute;
+  inset:0;
+  background: radial-gradient(60% 40% at 20% 20%, rgba(128,255,210,0.55), transparent 60%),
+              radial-gradient(50% 35% at 70% 30%, rgba(210,140,255,0.5), transparent 62%),
+              radial-gradient(45% 35% at 40% 70%, rgba(120,180,255,0.4), transparent 60%);
+  animation: aurora-shift 28s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+.aurora-layer .aurora.second{
+  background: radial-gradient(60% 40% at 80% 15%, rgba(255,180,220,0.45), transparent 60%),
+              radial-gradient(50% 40% at 30% 45%, rgba(140,255,200,0.45), transparent 62%),
+              radial-gradient(40% 35% at 60% 75%, rgba(120,160,255,0.35), transparent 60%);
+  animation: aurora-shift 34s ease-in-out infinite reverse;
+}
+
+@keyframes aurora-shift {
+  0% { transform: translate3d(-4%, -2%, 0) rotate(0deg) scale(1.02); }
+  50% { transform: translate3d(4%, 3%, 0) rotate(2deg) scale(1.05); }
+  100% { transform: translate3d(-3%, 2%, 0) rotate(-1deg) scale(1.02); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .floating-bubbles { display: none; }
+  .floating-bubbles,
+  .aurora-layer { display: none; }
 }
 
 /* Buttons */
@@ -322,8 +354,8 @@ body.page-about .nav a.active { background: rgba(124,107,99,0.14); color: #2f2b2
 .projects-cta{color:var(--text-muted);margin-top:6px;margin-bottom:12px;font-weight:600}
 
 /* Experience: recent CTA and arc section */
-.recent-cta{display:flex;justify-content:flex-end;margin:18px 0 6px}
-.recent-cta .button{font-size:13px}
+.recent-cta{display:flex;justify-content:flex-start;margin:18px 0 6px}
+.recent-cta .button{font-size:14px;padding:12px 18px;letter-spacing:0.2px}
 
 .arc-toggle{margin:12px 0 18px}
 .arc-panel{transition:max-height 0.3s ease,opacity 0.3s ease;overflow:hidden}
