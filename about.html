@@ -19,6 +19,10 @@
     <span class="bubble"></span>
     <span class="bubble"></span>
   </div>
+  <div class="signature-overlay" id="signature-overlay" aria-hidden="true">
+    <canvas class="signature-canvas" id="signature-canvas"></canvas>
+    <button class="signature-skip" id="signature-skip">Skip</button>
+  </div>
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
@@ -67,6 +71,75 @@
   <script>
   (function(){
     document.getElementById('year').textContent = new Date().getFullYear();
+    (function(){
+      const overlay = document.getElementById('signature-overlay');
+      const canvas = document.getElementById('signature-canvas');
+      const skipBtn = document.getElementById('signature-skip');
+      if (!overlay || !canvas) return;
+
+      const seenKey = 'signatureIntroSeen';
+      if (localStorage.getItem(seenKey) === 'true') {
+        overlay.classList.add('hidden');
+        return;
+      }
+
+      const ctx = canvas.getContext('2d');
+      let rect = canvas.getBoundingClientRect();
+      const base = [
+        [0.08, 0.55], [0.12, 0.5], [0.14, 0.42], [0.16, 0.34], [0.18, 0.28], [0.2, 0.24],
+        [0.22, 0.3], [0.22, 0.38], [0.22, 0.48], [0.22, 0.56],
+        [0.26, 0.46], [0.32, 0.42], [0.38, 0.43], [0.44, 0.5], [0.5, 0.54],
+        [0.56, 0.46], [0.6, 0.4], [0.64, 0.42], [0.68, 0.5], [0.72, 0.54],
+        [0.78, 0.48], [0.84, 0.44], [0.9, 0.46], [0.95, 0.5]
+      ];
+      let points = [];
+      function updatePoints(){
+        points = base.map(([x, y]) => [x * rect.width, y * rect.height]);
+      }
+      function resize(){
+        rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * window.devicePixelRatio;
+        canvas.height = rect.height * window.devicePixelRatio;
+        ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+        updatePoints();
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.lineWidth = 18;
+      ctx.strokeStyle = 'rgba(15,23,42,0.9)';
+
+      let i = 1;
+      ctx.beginPath();
+      ctx.moveTo(points[0][0], points[0][1]);
+
+      function draw(){
+        if (i >= points.length) {
+          finish();
+          return;
+        }
+        const [x, y] = points[i];
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        i++;
+        requestAnimationFrame(draw);
+      }
+
+      function finish(){
+        localStorage.setItem(seenKey, 'true');
+        setTimeout(()=> overlay.classList.add('hidden'), 500);
+      }
+
+      skipBtn && skipBtn.addEventListener('click', ()=>{
+        localStorage.setItem(seenKey, 'true');
+        overlay.classList.add('hidden');
+      });
+
+      overlay.setAttribute('aria-hidden', 'false');
+      requestAnimationFrame(draw);
+    })();
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const obs = new IntersectionObserver((entries, ob)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target);}})}, {threshold:0.12});
     document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
