@@ -425,7 +425,17 @@ body.page-about .nav a.active { background: rgba(124,107,99,0.14); color: #2f2b2
 
 /* Experience: recent CTA and arc section */
 .recent-cta{display:flex;justify-content:flex-start;margin:18px 0 6px}
-.recent-cta .button{font-size:14px;padding:12px 18px;letter-spacing:0.2px}
+.recent-cta .button{
+  font-size:14px;
+  padding:12px 20px;
+  letter-spacing:0.25px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#d580ff,#f3b6ff);
+  box-shadow:0 16px 32px rgba(181,85,255,0.28);
+  color:#2f0c44;
+  text-transform:none;
+}
+.recent-cta .button:hover{transform:translateY(-2px);box-shadow:0 22px 44px rgba(181,85,255,0.35)}
 
 .arc-toggle{margin:12px 0 18px}
 .arc-panel{transition:max-height 0.3s ease,opacity 0.3s ease;overflow:hidden}
@@ -501,6 +511,8 @@ body.page-about .nav a.active { background: rgba(124,107,99,0.14); color: #2f2b2
   .signature-skip { right: 16px; bottom: 16px; padding: 8px 12px; font-size: 12px; }
   .about-grid{grid-template-columns:1fr;gap:14px}
   .resume-grid{grid-template-columns:1fr}
+  .recent-cta{justify-content:center}
+  .recent-cta .button{font-size:13px;padding:12px 16px;text-align:center}
 }
 
 /* Page-specific subtle formatting when a tab is active */
