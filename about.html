@@ -11,14 +11,6 @@
   <link rel="icon" type="image/png" href="images/MAIN_FAVICON.png?v=2">
 </head>
 <body>
-  <div class="floating-bubbles" aria-hidden="true">
-    <span class="bubble"></span>
-    <span class="bubble"></span>
-    <span class="bubble"></span>
-    <span class="bubble"></span>
-    <span class="bubble"></span>
-    <span class="bubble"></span>
-  </div>
   <div class="signature-overlay" id="signature-overlay" aria-hidden="true">
     <canvas class="signature-canvas" id="signature-canvas"></canvas>
     <button class="signature-skip" id="signature-skip">Skip</button>
@@ -49,6 +41,9 @@
       <h2 class="about-greeting">Hi, I’m Ishan, nice to meet you.</h2>
       <p class="about-summary">I am an electrical engineering student focused on embedded systems, power electronics, and PCB design. I enjoy turning research ideas into manufacturable hardware, pairing firmware with electronics, and documenting decisions so the work can be reproduced and extended.</p>
       <p class="about-press"><span>Selected work:</span> <a href="experience.html">Experience</a> / <a href="resume.html">Resume</a></p>
+      <div class="secret-cta">
+        <button class="secret-button" type="button" id="secret-button">Want to Know a Secret</button>
+      </div>
     </section>
   </main>
 
@@ -82,23 +77,23 @@
         ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
-        ctx.lineWidth = 12;
-        ctx.strokeStyle = 'rgba(31,41,55,0.8)';
-        ctx.shadowColor = 'rgba(15,23,42,0.18)';
-        ctx.shadowBlur = 6;
-        ctx.font = `180px "Cormorant Garamond", Georgia, serif`;
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = 'rgba(31,41,55,0.7)';
+        ctx.shadowColor = 'rgba(15,23,42,0.14)';
+        ctx.shadowBlur = 4;
+        ctx.font = `190px "Allura", "Cormorant Garamond", Georgia, serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
       }
       resize();
       window.addEventListener('resize', resize);
-      let dash = rect.width * 2;
+      let dash = rect.width * 1.2;
       function draw(){
         ctx.clearRect(0, 0, rect.width, rect.height);
         ctx.setLineDash([dash, dash]);
         ctx.lineDashOffset = -dash;
         ctx.strokeText('Ishan', rect.width / 2, rect.height / 2);
-        dash -= rect.width / 70;
+        dash -= rect.width / 90;
         if (dash > 0) {
           requestAnimationFrame(draw);
         } else {
@@ -146,6 +141,19 @@
     placeIndicator(activeLink);
     window.addEventListener('resize', ()=> placeIndicator(document.querySelector('.nav a.active') || document.querySelector('.nav a')));
     navLinks.forEach(a=> a.addEventListener('click', ()=> placeIndicator(a)));
+    const secretButton = document.getElementById('secret-button');
+    if (secretButton) {
+      secretButton.addEventListener('click', () => {
+        const response = prompt('Password required');
+        if (!response) return;
+        if (response.trim().toLowerCase() === 'growth') {
+          window.location.href = 'secret.html';
+        } else {
+          alert('Incorrect password.');
+        }
+      });
+    }
+
     // image modal handlers
     const profile = document.getElementById('profile-img');
     const modal = document.getElementById('img-modal');

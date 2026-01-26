@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600&display=swap');
 
 :root {
   /* Core palette (Cohere-inspired light) */
@@ -37,6 +37,21 @@ body {
   overflow-x: hidden;
 }
 
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(35% 25% at 20% 15%, rgba(213,128,255,0.12), transparent 60%),
+    radial-gradient(30% 22% at 80% 20%, rgba(147,197,253,0.12), transparent 60%),
+    radial-gradient(28% 20% at 30% 80%, rgba(253,186,116,0.1), transparent 60%),
+    radial-gradient(26% 18% at 75% 75%, rgba(125,211,252,0.1), transparent 60%);
+  animation: ambient-shift 24s ease-in-out infinite;
+  opacity: 0.6;
+}
+
 main, .site-footer { position: relative; z-index: 1; }
 
 .name {
@@ -52,39 +67,14 @@ main, .site-footer { position: relative; z-index: 1; }
 .hero-image img{width:100%;height:100%;object-fit:cover;display:block}
 .hero-image--small{height:180px}
 
-/* Floating bubbles background */
-.floating-bubbles{
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-.floating-bubbles .bubble{
-  position: absolute;
-  bottom: -120px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.98), rgba(213,128,255,0.46));
-  opacity: 1;
-  animation: bubble-float 18s ease-in-out infinite;
-  filter: blur(0.2px) saturate(1.4);
-}
-.floating-bubbles .bubble:nth-child(1){ left: 8%; width: 120px; height: 120px; animation-duration: 20s; animation-delay: -2s; }
-.floating-bubbles .bubble:nth-child(2){ left: 22%; width: 80px; height: 80px; animation-duration: 16s; animation-delay: -8s; }
-.floating-bubbles .bubble:nth-child(3){ left: 45%; width: 140px; height: 140px; animation-duration: 22s; animation-delay: -4s; }
-.floating-bubbles .bubble:nth-child(4){ left: 62%; width: 90px; height: 90px; animation-duration: 17s; animation-delay: -11s; }
-.floating-bubbles .bubble:nth-child(5){ left: 78%; width: 110px; height: 110px; animation-duration: 19s; animation-delay: -6s; }
-.floating-bubbles .bubble:nth-child(6){ left: 92%; width: 70px; height: 70px; animation-duration: 15s; animation-delay: -9s; }
-
-@keyframes bubble-float {
-  0% { transform: translateY(0) translateX(0); opacity: 0; }
-  10% { opacity: 0.5; }
-  50% { transform: translateY(-60vh) translateX(-20px); opacity: 0.7; }
-  100% { transform: translateY(-120vh) translateX(20px); opacity: 0; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .floating-bubbles { display: none; }
+  body::before { animation: none; opacity: 0.3; }
+}
+
+@keyframes ambient-shift {
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(2%, -2%, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
 
 /* Buttons */
@@ -167,6 +157,58 @@ body.page-about .nav a.active { background: rgba(124,107,99,0.14); color: #2f2b2
 .about-press span { font-weight: 600; }
 .about-press a { color: #7d6d63; text-decoration: none; padding: 0 8px; }
 .about-press a:hover { text-decoration: underline; }
+
+.secret-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.secret-button {
+  border: 1px solid rgba(47, 43, 40, 0.25);
+  background: rgba(255, 255, 255, 0.75);
+  color: #2f2b28;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  box-shadow: 0 14px 28px rgba(47, 43, 40, 0.08);
+}
+
+.secret-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(47, 43, 40, 0.4);
+  box-shadow: 0 18px 34px rgba(47, 43, 40, 0.12);
+}
+
+.secret-button:focus-visible {
+  outline: 2px solid rgba(169, 111, 239, 0.5);
+  outline-offset: 3px;
+}
+
+.secret-page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 90px 24px 120px;
+  text-align: left;
+}
+
+.secret-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 4.6vw, 3.1rem);
+  color: #2f2b28;
+  margin-bottom: 16px;
+}
+
+.secret-text {
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: #5a514b;
+  white-space: pre-line;
+}
 
 @media (max-width: 700px) {
   .about-shell { padding: 72px 20px 100px; }
