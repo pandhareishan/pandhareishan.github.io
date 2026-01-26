@@ -11,6 +11,14 @@
   <link rel="icon" type="image/png" href="images/MAIN_FAVICON.png?v=2">
 </head>
 <body>
+  <div class="floating-bubbles" aria-hidden="true">
+    <span class="bubble"></span>
+    <span class="bubble"></span>
+    <span class="bubble"></span>
+    <span class="bubble"></span>
+    <span class="bubble"></span>
+    <span class="bubble"></span>
+  </div>
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
@@ -48,7 +56,7 @@
           </a>
           <a href="#proj-boeing" class="timeline-item" onclick="scrollToItem(event)">
             <span class="timeline-dot"></span>
-            <span class="timeline-label">2023</span>
+            <span class="timeline-label">2025</span>
             <span class="timeline-title">Boeing Algae</span>
           </a>
           <a href="#proj-rube" class="timeline-item" onclick="scrollToItem(event)">
@@ -59,7 +67,7 @@
           <a href="#proj-faucet" class="timeline-item" onclick="scrollToItem(event)">
             <span class="timeline-dot"></span>
             <span class="timeline-label">2023</span>
-            <span class="timeline-title">Faucet</span>
+            <span class="timeline-title">Automated Faucet</span>
           </a>
           <a href="#item-calpoly" class="timeline-item" onclick="scrollToItem(event)">
             <span class="timeline-dot"></span>
@@ -74,6 +82,10 @@
         </div>
       </div>
       <button class="timeline-scroll-btn right" onclick="scrollTimeline('right')">›</button>
+    </div>
+
+    <div class="recent-cta" data-reveal>
+      <a class="button" href="#projects">See recent work</a>
     </div>
 
     <!-- Education Section -->
@@ -194,7 +206,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section class="card">
+    <section class="card" id="projects">
       <h2>Projects</h2>
       <p class="projects-cta">Click a project to learn more!</p>
       <div class="projects-grid">
@@ -253,6 +265,47 @@
           <p>Raspberry Pi + LoRa system for emergency messaging and CDP packet transfer. Web interface and messaging via Flask + Redis Streams for reliable communication in remote areas.</p>
           <p class="small"><a href="#">Repository / Details</a></p>
         </article>
+      </div>
+    </section>
+
+    <section class="card" id="project-arc">
+      <h2>My Three Project Arc</h2>
+      <button class="expand-btn arc-toggle" onclick="toggleDetails(this)">
+        <span class="arrow">▼</span>
+        <span>View the arc</span>
+      </button>
+      <div class="arc-panel" style="display: none;">
+        <div class="arc-grid">
+          <article class="arc-card" data-reveal data-slug="arc-phase-1">
+            <div class="arc-media">
+              <div class="arc-thumb thumb--arc-1" aria-hidden="true"></div>
+              <div class="arc-overlay">View</div>
+            </div>
+            <h4>Phase 1 — Foundations</h4>
+            <p>Early builds focused on fundamentals: circuits, firmware, and documentation habits.</p>
+            <p class="small">Placeholder — update details later.</p>
+          </article>
+
+          <article class="arc-card" data-reveal data-slug="arc-phase-2">
+            <div class="arc-media">
+              <div class="arc-thumb thumb--arc-2" aria-hidden="true"></div>
+              <div class="arc-overlay">View</div>
+            </div>
+            <h4>Phase 2 — Systems</h4>
+            <p>Integrated subsystems with tighter requirements, testing plans, and iteration cycles.</p>
+            <p class="small">Placeholder — update details later.</p>
+          </article>
+
+          <article class="arc-card" data-reveal data-slug="arc-phase-3">
+            <div class="arc-media">
+              <div class="arc-thumb thumb--arc-3" aria-hidden="true"></div>
+              <div class="arc-overlay">View</div>
+            </div>
+            <h4>Phase 3 — Deployment</h4>
+            <p>Recent work emphasizing reliability, reproducibility, and real-world validation.</p>
+            <p class="small">Placeholder — update details later.</p>
+          </article>
+        </div>
       </div>
     </section>
   </main>
@@ -333,6 +386,15 @@
       },
       'owl-project': {
         modalImage: 'images/rpi-user-interface.png'
+      },
+      'arc-phase-1': {
+        modalImage: 'images/hero-board.jpg'
+      },
+      'arc-phase-2': {
+        modalImage: 'images/hero-board.jpg'
+      },
+      'arc-phase-3': {
+        modalImage: 'images/hero-board.jpg'
       }
     };
 
@@ -376,6 +438,13 @@
     document.querySelectorAll('.proj-media').forEach(pm=>{
       pm.addEventListener('click', (e)=>{
         const article = pm.closest('.project');
+        if(article) openProject(article);
+      });
+    });
+
+    document.querySelectorAll('.arc-media').forEach(am=>{
+      am.addEventListener('click', ()=>{
+        const article = am.closest('.arc-card');
         if(article) openProject(article);
       });
     });
