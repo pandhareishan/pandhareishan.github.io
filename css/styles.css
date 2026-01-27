@@ -393,9 +393,13 @@ body.page-about .nav a.active { background: rgba(124,107,99,0.14); color: #2f2b2
 
 .project-details{
   margin-top: 14px;
-  display: grid;
+  display: none;
   gap: 14px;
   color: var(--text-main);
+}
+
+.pm-desc .project-details{
+  display: grid;
 }
 
 .detail-section h5{

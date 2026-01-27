@@ -289,7 +289,7 @@
             <h4>Phase 1 - Buck Converter Design</h4>
             <p>I designed and validated a 120 W buck converter end-to-end, using analytical sizing and simulation to verify ripple, efficiency, and loss mechanisms that drive thermal and reliability constraints in power electronics.</p>
             <p class="proj-skills">Skills: Power Electronics · LTspice · Loss Modeling · CCM Analysis · Engineering Documentation</p>
-            <div class="project-details">
+            <div class="project-details" aria-hidden="true">
               <div class="detail-section">
                 <h5>Quick Summary</h5>
                 <p>Designed a 24 V → 12 V, 120 W buck converter and validated steady-state performance, ripple, and loss behavior through analytical modeling and LTspice simulation.</p>
@@ -311,14 +311,14 @@
                     <p class="doc-title">Final Design Brief</p>
                     <p class="doc-desc">A concise, engineer-focused summary highlighting design intent, key results, and efficiency insights.</p>
                   </div>
-                  <a class="doc-btn doc-btn-primary" href="#">View Final Design Brief →</a>
+                  <a class="doc-btn doc-btn-primary" href="https://github.com/pandhareishan/buck_converter_design/blob/main/docs/Final_BuckConverterProject.pdf" target="_blank" rel="noopener">View Final Design Brief →</a>
                 </div>
                 <div class="doc-card doc-card-secondary">
                   <div>
                     <p class="doc-title">Full Technical Report</p>
                     <p class="doc-desc">A detailed analysis covering derivations, simulations, validation steps, and modeling assumptions.</p>
                   </div>
-                  <a class="doc-btn doc-btn-secondary" href="#">View Full Technical Report →</a>
+                  <a class="doc-btn doc-btn-secondary" href="https://github.com/pandhareishan/buck_converter_design/blob/main/docs/BuckConverterProject.pdf" target="_blank" rel="noopener">View Full Technical Report →</a>
                 </div>
               </div>
               <div class="detail-section">
@@ -333,7 +333,7 @@
               </div>
               <div class="detail-section">
                 <h5>Repository</h5>
-                <a class="doc-btn doc-btn-secondary" href="https://github.com/pandhareishan/buck_converter_design.git" target="_blank" rel="noopener">View Code &amp; Files on GitHub →</a>
+                <a class="doc-btn doc-btn-secondary" href="https://github.com/pandhareishan/buck_converter_design" target="_blank" rel="noopener">View Code &amp; Files on GitHub →</a>
               </div>
             </div>
           </article>
@@ -505,8 +505,13 @@
       const slug = article.dataset.slug;
       const title = article.querySelector('h4') && article.querySelector('h4').textContent || '';
       const desc = article.querySelector('p') && article.querySelector('p').textContent || '';
+      const detailBlock = article.querySelector('.project-details');
       pmTitle.textContent = title;
-      pmDesc.textContent = desc;
+      if (detailBlock) {
+        pmDesc.innerHTML = detailBlock.innerHTML;
+      } else {
+        pmDesc.textContent = desc;
+      }
       pmLinks.innerHTML = article.querySelector('.small') ? article.querySelector('.small').innerHTML : '';
       pmMedia.innerHTML = '';
       const loadId = ++projectLoadId;
