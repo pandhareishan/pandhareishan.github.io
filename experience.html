@@ -41,7 +41,7 @@
         <div class="timeline-items">
           <a href="#item-sagecreek" class="timeline-item" onclick="scrollToItem(event)">
             <span class="timeline-dot"></span>
-            <span class="timeline-label">2019—2023</span>
+            <span class="timeline-label">2019-2023</span>
             <span class="timeline-title">Sage Creek</span>
           </a>
           <a href="#proj-comet-card" class="timeline-item" onclick="scrollToItem(event)">
@@ -66,8 +66,13 @@
           </a>
           <a href="#item-calpoly" class="timeline-item" onclick="scrollToItem(event)">
             <span class="timeline-dot"></span>
-            <span class="timeline-label">2023—Present</span>
+            <span class="timeline-label">2023-Present</span>
             <span class="timeline-title">Cal Poly</span>
+          </a>
+          <a href="#proj-dac" class="timeline-item" onclick="scrollToItem(event)">
+            <span class="timeline-dot"></span>
+            <span class="timeline-label">2024</span>
+            <span class="timeline-title">DAC Design</span>
           </a>
           <a href="#proj-owl" class="timeline-item" onclick="scrollToItem(event)">
             <span class="timeline-dot"></span>
@@ -88,7 +93,7 @@
       <h2>Education</h2>
       <div class="vertical-timeline">
         <div class="timeline-item-full" id="item-sagecreek" data-reveal>
-          <div class="date">August 2019 — June 2023</div>
+          <div class="date">August 2019 - June 2023</div>
           <h3>Student @ Sage Creek High School</h3>
           <p class="meta">PLTW Four-Year Engineering Pathway</p>
           <button class="expand-btn" onclick="toggleDetails(this)">
@@ -120,7 +125,7 @@
         </div>
 
         <div class="timeline-item-full" id="item-calpoly" data-reveal>
-          <div class="date">2023 — Present</div>
+          <div class="date">2023 - Present</div>
           <h3>Electrical Engineering Student @ Cal Poly</h3>
           <p class="meta">California Polytechnic University - San Luis Obispo</p>
           <button class="expand-btn" onclick="toggleDetails(this)">
@@ -227,6 +232,18 @@
           <p class="small"><a href="#">Repository / Details</a></p>
         </article>
 
+        <article class="project" id="proj-dac" data-reveal data-slug="dac-design">
+          <div class="proj-media">
+            <div class="proj-thumb thumb--teal" aria-hidden="true"></div>
+            <div class="proj-overlay">View</div>
+          </div>
+          <h4>Digital-To-Analog Converter (2024)</h4>
+          <div class="proj-badge">Class Project</div>
+          <p>Designed and validated a DAC circuit end-to-end, from schematic capture and PCB layout to bench testing and signal verification across operating conditions.</p>
+          <p class="proj-skills">Skills: LTspice · Eagle · Oshpark (PCB Manufacture) · Soldering · Oscilloscope · Function Generator · Multimeter</p>
+          <p class="small"><a href="docs/EE-143%20DAC%20Design%20Document.pdf" target="_blank" rel="noopener">Design Document</a></p>
+        </article>
+
         <article class="project" id="proj-owl" data-reveal data-slug="owl-project">
           <div class="proj-media">
             <div class="proj-thumb thumb--blue" aria-hidden="true" style="background-image:url('images/OWL.jpg'); background-size:contain; background-position:45% 50%; background-repeat:no-repeat;"></div>
@@ -275,11 +292,11 @@
 
     <section class="card" id="project-arc">
       <h2>My Recent Knowledge Trilogy</h2>
-      <button class="expand-btn arc-toggle" onclick="toggleDetails(this)">
+      <button class="expand-btn arc-toggle open" onclick="toggleDetails(this)" data-open-text="Collapse the arc" data-closed-text="View the arc">
         <span class="arrow">▼</span>
-        <span>View the arc</span>
+        <span>Collapse the arc</span>
       </button>
-      <div class="arc-panel" style="display: none;">
+      <div class="arc-panel" style="display: block;">
         <div class="arc-grid">
           <article class="arc-card" data-reveal data-slug="arc-phase-1">
             <div class="arc-media">
@@ -343,9 +360,38 @@
               <div class="arc-thumb thumb--arc-2" aria-hidden="true"></div>
               <div class="arc-overlay">View</div>
             </div>
-            <h4>Phase 2 - Systems</h4>
-            <p>Integrated subsystems with tighter requirements, testing plans, and iteration cycles.</p>
-            <p class="small">Placeholder — update details later.</p>
+            <h4>AI Thermal Fault Detection for Power Electronics</h4>
+            <p>I developed an AI-driven thermal fault detection approach for power electronics, using data-driven modeling and validation to identify early fault signatures that impact reliability and thermal constraints.</p>
+            <p class="proj-skills">Skills: Thermal Modeling · Fault Classification · Python · Data Analysis · Reliability</p>
+            <div class="project-details" aria-hidden="true">
+              <div class="detail-section">
+                <h5>Quick Summary</h5>
+                <p>Built a data-driven thermal fault detection workflow for power electronics, validating early warning signatures under realistic operating profiles.</p>
+              </div>
+              <div class="detail-section">
+                <h5>Key Outcomes</h5>
+                <ul>
+                  <li>Identified temperature-driven fault signatures</li>
+                  <li>Developed a repeatable preprocessing pipeline</li>
+                  <li>Benchmarked detection accuracy across operating points</li>
+                  <li>Linked thermal anomalies to reliability risk</li>
+                </ul>
+              </div>
+              <div class="detail-section">
+                <h5>Tools &amp; Methods</h5>
+                <div class="tag-list">
+                  <span>Python</span>
+                  <span>Feature Engineering</span>
+                  <span>Classification Models</span>
+                  <span>Thermal Profiling</span>
+                  <span>Validation Metrics</span>
+                </div>
+              </div>
+              <div class="detail-section">
+                <h5>Repository</h5>
+                <a class="doc-btn doc-btn-secondary" href="#" target="_blank" rel="noopener">View Code &amp; Files on GitHub →</a>
+              </div>
+            </div>
           </article>
 
           <article class="arc-card" data-reveal data-slug="arc-phase-3">
@@ -570,6 +616,12 @@
     const isOpen = details.style.display !== 'none';
     details.style.display = isOpen ? 'none' : 'block';
     btn.classList.toggle('open');
+    const label = btn.querySelector('span:last-child');
+    const openText = btn.getAttribute('data-open-text');
+    const closedText = btn.getAttribute('data-closed-text');
+    if (label && openText && closedText) {
+      label.textContent = isOpen ? closedText : openText;
+    }
   }
 
   function scrollTimeline(direction) {
