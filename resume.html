@@ -68,8 +68,10 @@
       if (!overlay || !canvas) return;
 
       const ctx = canvas.getContext('2d');
+      if (!ctx) { overlay.remove(); return; }
       let rect = canvas.getBoundingClientRect();
       let dash = 0;
+      let finished = false;
       function resize(){
         rect = canvas.getBoundingClientRect();
         canvas.width = rect.width * window.devicePixelRatio;
@@ -103,13 +105,17 @@
       }
 
       function finish(){
+        if (finished) return;
+        finished = true;
         overlay.classList.add('hidden');
         setTimeout(()=> overlay.remove(), 500);
+        clearTimeout(failSafe);
       }
 
       skipBtn && skipBtn.addEventListener('click', finish);
 
       overlay.setAttribute('aria-hidden', 'false');
+      const failSafe = setTimeout(finish, 2500);
       requestAnimationFrame(draw);
     })();
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

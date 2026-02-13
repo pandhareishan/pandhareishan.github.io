@@ -43,7 +43,7 @@
       <p class="about-summary">Outside of engineering, I prioritize my mental and physical health through consistent routines, maintaining a healthy circadian rhythm, and staying active with running, surfing, and pickleball. These practices keep me grounded, disciplined, and curious, shaping how I approach both life and engineering with focus and intention.</p>
       <p class="about-press"><span>Selected work:</span> <a href="experience.html">Experience</a> / <a href="resume.html">Resume</a></p>
       <div class="secret-cta">
-        <button class="secret-button" type="button" id="secret-button">Want to Know a Secret</button>
+        <button class="secret-button" type="button" id="secret-button">Newfound Motivation</button>
       </div>
     </section>
   </main>
@@ -70,8 +70,10 @@
       if (!overlay || !canvas) return;
 
       const ctx = canvas.getContext('2d');
+      if (!ctx) { overlay.remove(); return; }
       let rect = canvas.getBoundingClientRect();
       let dash = 0;
+      let finished = false;
       function resize(){
         rect = canvas.getBoundingClientRect();
         canvas.width = rect.width * window.devicePixelRatio;
@@ -105,13 +107,17 @@
       }
 
       function finish(){
+        if (finished) return;
+        finished = true;
         overlay.classList.add('hidden');
         setTimeout(()=> overlay.remove(), 500);
+        clearTimeout(failSafe);
       }
 
       skipBtn && skipBtn.addEventListener('click', finish);
 
       overlay.setAttribute('aria-hidden', 'false');
+      const failSafe = setTimeout(finish, 2500);
       requestAnimationFrame(draw);
     })();
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
