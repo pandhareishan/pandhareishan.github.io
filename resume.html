@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Resume</title>
+  <title>Documentation</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=1.4">
@@ -27,7 +27,7 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="experience.html">Experience</a>
-        <a href="resume.html">Resume</a>
+        <a href="resume.html">Documentation</a>
         <span class="nav-indicator" aria-hidden="true"></span>
       </nav>
     </div>
@@ -36,20 +36,32 @@
   <main class="container">
     <section class="card resume-grid" data-reveal>
       <div>
-        <h2>Resume</h2>
-        <p class="hero-sub">Download a printable PDF or preview it on the right.</p>
-        <p style="margin-top:12px"><a class="button" href="Ishan Pandhare Resume.pdf" download>Download Resume (PDF)</a></p>
+        <h2>Documentation</h2>
+        <p class="hero-sub">Request a copy of my resume and review certifications.</p>
+        <p style="margin-top:12px"><a class="button" href="mailto:?subject=Resume%20Request&body=Hi%20Ishan%2C%0A%0ACould%20you%20please%20send%20me%20a%20copy%20of%20your%20resume%20and%20certifications%3F%0A%0AThanks%2C%0A" target="_blank" rel="noopener">Click to Request Resume</a></p>
         <h3 style="margin-top:20px">Summary</h3>
-        <p>Electrical engineering student experienced in embedded systems, power electronics, PCB design, and prototyping. Focused on measurable results and reproducible workflows.</p>
+        <p>Electrical engineering student with hands-on experience in embedded systems, power electronics, and system-level integration. I focus on designing reliable hardware and clean, data-driven validation workflows.</p>
         <h3 style="margin-top:18px">Skills</h3>
         <ul>
-          <li>Embedded C, Python</li>
-          <li>PCB layout, SPICE simulation</li>
-          <li>Power converters, test automation</li>
+          <li>Embedded C / Python · PCB Layout</li>
+          <li>Power Electronics · Signal Integrity</li>
+          <li>Test Automation · Data Analysis</li>
+        </ul>
+        <h3 style="margin-top:18px">Certifications</h3>
+        <ul>
+          <li>Certified LabVIEW Associate Developer (CLAD) – (example)</li>
+          <li>NI Fundamentals of Simulink – (example)</li>
+          <li>OSHA 10 (example)</li>
         </ul>
       </div>
-      <aside class="resume-side" aria-label="Resume preview">
-        <object data="Ishan Pandhare Resume.pdf" type="application/pdf" width="100%" height="420">Your browser does not support embedded PDFs. <a href="Ishan Pandhare Resume.pdf">Open PDF</a></object>
+      <aside class="resume-side" aria-label="Documentation highlights">
+        <h3>Certifications &amp; Artifacts</h3>
+        <ul>
+          <li>CLAD (LabVIEW Associate Developer)</li>
+          <li>NI Fundamentals of Simulink</li>
+          <li>OSHA 10</li>
+        </ul>
+        <p><em>Resume is available via request using the button above.</em></p>
       </aside>
     </section>
   </main>
@@ -62,10 +74,14 @@
   (function(){
     document.getElementById('year').textContent = new Date().getFullYear();
     (function(){
+      const signatureAnimationEnabled = false;
       const overlay = document.getElementById('signature-overlay');
       const canvas = document.getElementById('signature-canvas');
       const skipBtn = document.getElementById('signature-skip');
-      if (!overlay || !canvas) return;
+      if (!overlay || !canvas || !signatureAnimationEnabled) {
+        overlay && overlay.remove();
+        return;
+      }
 
       const ctx = canvas.getContext('2d');
       if (!ctx) { overlay.remove(); return; }
